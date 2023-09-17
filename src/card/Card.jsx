@@ -3,33 +3,29 @@ import Title from "../tilte/Title";
 import { IoIosStarOutline } from "react-icons/io";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../redux/features/productSlice/productSlice";
+import { addToCart } from "../redux/features/productSlice/productSlice";
 
 function Card(props) {
   const dispatch = useDispatch();
   const mainData = useSelector((state) => state.product.data);
-  // const [mainData, setMainData] = useState([
-  //   { name: 225, image: "dfdfdf", id: 1 },
-  //   { name: 225, image: "dfdfdf", id: 2 },
-  //   { name: 225, image: "dfdfdf", id: 3 },
-  //   { name: 225, image: "dfdfdf", id: 4 },
-  // ]);
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
 
-  const [isActive, setIsActive] = useState(false);
+  // const [isActive, setIsActive] = useState(false);
 
-  const handleDisplayOn = (id) => {
-    // const a = mainData.filter((item) => item.id === id);
+  // const handleDisplayOn = (id) => {
+  //   // const a = mainData.filter((item) => item.id === id);
 
-    // 👇️ toggle
-    setIsActive((a) => !a);
-  };
-  const handleDisplayOut = (id) => {
-    // const a = mainData.filter((item) => item.id === id);
-    // 👇️ toggle
-    setIsActive((a) => !a);
-  };
+  //   // 👇️ toggle
+  //   setIsActive((a) => !a);
+  // };
+  // const handleDisplayOut = (id) => {
+  //   // const a = mainData.filter((item) => item.id === id);
+  //   // 👇️ toggle
+  //   setIsActive((a) => !a);
+  // };
 
   return (
     <div className="mb-28 w-[100%] ">
@@ -45,8 +41,8 @@ function Card(props) {
             return (
               <div
                 className="flex flex-col items-center justify-around w-[350px] h-[600px] bg-white border rounded-[40px] overflow-hidden hover:shadow-lg cursor-pointer "
-                onMouseOver={() => handleDisplayOn(item.id)}
-                onMouseOut={() => handleDisplayOut(item.id)}
+                // onMouseOver={() => handleDisplayOn(item.id)}
+                // onMouseOut={() => handleDisplayOut(item.id)}
                 key={item.id}
               >
                 <img
@@ -64,21 +60,31 @@ function Card(props) {
                 <p className="text-center text-xl font-semibold mb-10">
                   {item.title}
                 </p>
-                <div className="relative mb-10 ">
+                <div className=" mb-10 ">
                   <p
-                    className="text-primery text-2xl font-bold mb-3  absolute left-[-40px] bottom-[-10px] "
-                    style={{
-                      display: isActive ? "none" : "",
-                    }}
+                    className="text-primery text-center text-2xl font-bold mb-3  "
+                    // style={{
+                    //   display: isActive ? "none" : "",
+                    // }}
                   >
                     ${item.price}
                   </p>
                   <button
-                    className="border bg-white text-black rounded-2xl w-[150px] h-[50px]  justify-center items-center  hidden absolute left-[-75px] bottom-[-10px] hover:bg-primery hover:text-white transition-all ease-linear duration-300  "
+                    className="border bg-white text-black rounded-2xl w-[150px] h-[50px]  justify-center items-center  hover:bg-primery hover:text-white transition-all ease-linear duration-300  "
                     id="abc"
-                    style={{
-                      display: isActive ? "flex" : "",
-                    }}
+                    // style={{
+                    //   display: isActive ? "flex" : "",
+                    // }}
+                    onClick={() =>
+                      dispatch(
+                        addToCart({
+                          id: item.id,
+                          title: item.title,
+                          image: item.image,
+                          price: item.price,
+                        })
+                      )
+                    }
                   >
                     add to cart
                   </button>

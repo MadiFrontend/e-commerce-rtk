@@ -21,13 +21,40 @@ export const fetchProducts = createAsyncThunk(
 const initialState = {
   loading: false,
   data: [],
+  cart: [],
   error: null,
 };
 
 const productSlice = createSlice({
   name: "productSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    addToCart: (state, action) => {
+      const addToCartData = state.cart.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (addToCartData) {
+        addToCartData.quantity++;
+      } else {
+        state.cart.push({ ...action.payload, quantity: 1 });
+      }
+    },
+    incrementQuantity: (state, action) => {
+      const item = state.cart.find((item) => item.id === action.payload);
+      item.quantity++;
+    },
+    decrementQuantity: (state, action) => {
+      const item = state.cart.find((item) => item.id === action.payload);
+      item.quantity === 1 ? (item.quantity = 1) : item.quantity--;
+    },
+    removeItem: (state, action) => {
+      const deleteItem = state.cart.filter(
+        (item) => item.id !== action.payload
+      );
+      state.cart = deleteItem;
+    },
+  },
   extraReducers: (bulider) => {
     bulider.addCase(fetchProducts.pending, (state, action) => {
       state.loading = true;
@@ -44,4 +71,6 @@ const productSlice = createSlice({
   },
 });
 
+export const { addToCart, incrementQuantity, decrementQuantity, removeItem } =
+  productSlice.actions;
 export default productSlice.reducer;

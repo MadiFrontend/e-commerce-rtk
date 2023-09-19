@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../redux/features/productSlice/productSlice";
-import Filtermodule from "../filterModule/FIlterModule";
+import {
+  fetchProducts,
+  updateTotal,
+} from "../redux/features/productSlice/productSlice";
+
+import Filtermodal from "../filterModule/Filtermodal";
+
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { IoIosArrowDown } from "react-icons/io";
@@ -13,11 +18,15 @@ export const Header = () => {
   const [searchMyData, setSearchMyData] = useState([]);
   const [show, setShow] = useState(true);
   const dispatch = useDispatch();
-  const myData = useSelector((state) => state.product.data);
+  const { cart, amount } = useSelector((state) => state.product);
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+
+  useEffect(() => {
+    dispatch(updateTotal());
+  }, [dispatch, cart]);
 
   const searchHandler = (e) => {
     const inputData = e.target.value;
@@ -34,7 +43,7 @@ export const Header = () => {
 
   return (
     <>
-      <div className="w-full flex justify-center items-center bg-white opacity-90 fixed top-[0px] pb-4 shadow-md ">
+      <div className="w-full flex justify-center items-center bg-white opacity-90 fixed z-50 top-[0px] pb-4 shadow-md ">
         <div className="flex justify-between items-center pt-8  w-[85%]   ">
           <Link to="/">
             <img src={logo} alt="logo" />
@@ -67,7 +76,7 @@ export const Header = () => {
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                   <svg
-                    className="w-4 h-4 text-myRed dark:text-gray-400"
+                    className="w-4 h-4 text-primery dark:text-gray-400"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -75,8 +84,8 @@ export const Header = () => {
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                     />
                   </svg>
@@ -95,10 +104,15 @@ export const Header = () => {
             </form>
 
             <Link to="/cartpage">
-              <AiOutlineShoppingCart
-                size={30}
-                className="cursor-pointer text-[#6c757d] hover:text-primery"
-              />
+              <div className="relative">
+                <AiOutlineShoppingCart
+                  size={30}
+                  className="cursor-pointer text-[#6c757d] hover:text-primery"
+                />
+                <span className="px-[8px] py-[2px] rounded-full bg-primery absolute bottom-5 left-4 text-white">
+                  {amount}
+                </span>
+              </div>
             </Link>
           </div>
         </div>
@@ -108,7 +122,7 @@ export const Header = () => {
           display: show ? "none" : "",
         }}
       >
-        <Filtermodule searchMyData={searchMyData} />
+        <Filtermodal searchMyData={searchMyData} />
       </div>
     </>
   );

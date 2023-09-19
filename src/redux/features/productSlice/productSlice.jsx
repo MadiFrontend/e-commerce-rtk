@@ -23,6 +23,8 @@ const initialState = {
   data: [],
   cart: [],
   error: null,
+  amount: 0,
+  total: 0,
 };
 
 const productSlice = createSlice({
@@ -54,7 +56,18 @@ const productSlice = createSlice({
       );
       state.cart = deleteItem;
     },
+    updateTotal: (state) => {
+      let amount = 0;
+      let total = 0;
+      state.cart.map((item) => {
+        amount += item.quantity;
+        total += item.quantity * item.price;
+      });
+      state.total = total;
+      state.amount = amount;
+    },
   },
+
   extraReducers: (bulider) => {
     bulider.addCase(fetchProducts.pending, (state, action) => {
       state.loading = true;
@@ -71,6 +84,11 @@ const productSlice = createSlice({
   },
 });
 
-export const { addToCart, incrementQuantity, decrementQuantity, removeItem } =
-  productSlice.actions;
+export const {
+  addToCart,
+  incrementQuantity,
+  decrementQuantity,
+  removeItem,
+  updateTotal,
+} = productSlice.actions;
 export default productSlice.reducer;

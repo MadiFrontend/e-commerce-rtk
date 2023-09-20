@@ -66,6 +66,10 @@ const productSlice = createSlice({
       state.total = total;
       state.amount = amount;
     },
+    removeCartItems: (state) => {
+      state.cart = [];
+      console.log(state.cart);
+    },
   },
 
   extraReducers: (bulider) => {
@@ -90,5 +94,6 @@ export const {
   decrementQuantity,
   removeItem,
   updateTotal,
+  removeCartItems,
 } = productSlice.actions;
 export default productSlice.reducer;

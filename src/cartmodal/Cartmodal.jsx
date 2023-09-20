@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Cartmodal = ({ cart }) => {
   const dispatch = useDispatch();
   return (
-    <div className="bg-white w-[22%] h-[500px]  shadow-2xl border rounded-2xl fixed z-30 right-[0px] top-[12%] overflow-y-scroll scrollbar-hide ">
+    <div className="bg-white w-[22%] h-[500px]  shadow-2xl border rounded-2xl fixed z-50 right-[15px] top-[95px] overflow-y-scroll scrollbar-hide ">
       {cart.length === 0 ? (
         <div className="h-full flex justify-center items-center text-2xl">
           <h2>Your Cart Is Empty!</h2>
@@ -15,7 +15,10 @@ const Cartmodal = ({ cart }) => {
       ) : (
         cart.slice(0, 3).map((search) => {
           return (
-            <div className="flex items-center my-10 hover:shadow-sm pb-1 cursor-pointer pr-2">
+            <div
+              className="flex items-center my-3 hover:shadow-sm pb-1 cursor-pointer pr-2"
+              key={search.id}
+            >
               <div className="w-[90px] h-[70px] mx-5">
                 <img src={search.image} alt="" className="w-full h-full" />
               </div>

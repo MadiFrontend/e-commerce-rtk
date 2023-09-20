@@ -6,6 +6,7 @@ import {
   incrementQuantity,
   decrementQuantity,
   removeItem,
+  removeCartItems,
 } from "../redux/features/productSlice/productSlice";
 import Title from "../tilte/Title";
 import { Link } from "react-router-dom";
@@ -18,6 +19,7 @@ function Cartpage() {
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+
   return (
     <div>
       <div className="mt-28">
@@ -37,7 +39,10 @@ function Cartpage() {
           ) : (
             mainData.map((item) => {
               return (
-                <div className="border p-5 flex justify-between items-center w-[70%] ">
+                <div
+                  className="border p-5 flex justify-between items-center w-[70%] "
+                  key={item.id}
+                >
                   <div className="w-[150px] h-[150px] mr-10 bg-red-500">
                     <img
                       src={item.image}
@@ -81,14 +86,19 @@ function Cartpage() {
             })
           )}
         </div>
-        <div className="w-[25%] h-[293px] flex flex-col items-center justify-center fixed right-0 mr-24  border-[2px] border-[#eee]">
-          <h2 className="font-bold text-[20px]">Total Price</h2>
-          <h2 className="font-bold text-primery text-[18px]">
+        <div className="w-[25%] h-[293px] flex flex-col items-center justify-evenly fixed right-0 mr-24  border-[2px] border-[#eee]">
+          <h2 className="font-bold text-[50px]">Total Price</h2>
+          <h2 className="font-bold text-primery text-[35px]">
             ${parseFloat(total).toFixed(2)}
           </h2>
-          <button className="border border-primery text-primery px-4 py-1 rounded-[10px] mt-3 hover:bg-primery hover:text-white">
-            Purches!
-          </button>
+          <Link to="/finalpage">
+            <button
+              className="border border-primery text-primery px-6 py-2 text-[20px] rounded-[10px] mt-3 hover:bg-primery hover:text-white"
+              onClick={() => dispatch(removeCartItems())}
+            >
+              Purchase!
+            </button>
+          </Link>
         </div>
       </div>
     </div>

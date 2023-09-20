@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Title from "../tilte/Title";
 import { IoIosStarOutline } from "react-icons/io";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../redux/features/productSlice/productSlice";
 import { addToCart } from "../redux/features/productSlice/productSlice";
+import { Link } from "react-router-dom";
 
 function Card(props) {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ function Card(props) {
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+  /* Links */
 
   // const [isActive, setIsActive] = useState(false);
 
@@ -37,19 +39,22 @@ function Card(props) {
       <div className="grid grid-cols sm:grid-cols md:grid-cols-4 gap-5">
         {mainData
           .filter((cat) => cat.category === props.filterName)
+          .slice(0, 4)
           .map((item) => {
             return (
               <div
-                className="flex flex-col items-center justify-around w-[350px] h-[600px] bg-white border rounded-[40px] overflow-hidden hover:shadow-lg cursor-pointer "
+                className="flex flex-col items-center justify-around w-[280px] h-[500px] bg-white border rounded-[40px] overflow-hidden hover:shadow-lg cursor-pointer "
                 // onMouseOver={() => handleDisplayOn(item.id)}
                 // onMouseOut={() => handleDisplayOut(item.id)}
                 key={item.id}
               >
-                <img
-                  src={item.image}
-                  alt="aks"
-                  className="w-[100%] h-[50%] overflow-hidden"
-                />
+                <Link to={`/products/${item.id}`}>
+                  <img
+                    src={item.image}
+                    alt="aks"
+                    className="w-[200px] h-[170px] overflow-hidden mt-5"
+                  />
+                </Link>
                 <div className="flex justify-center">
                   <IoIosStarOutline size={18} color="red" />
                   <IoIosStarOutline size={18} color="red" />
@@ -57,7 +62,7 @@ function Card(props) {
                   <IoIosStarOutline size={18} color="red" />
                   <IoIosStarOutline size={18} color="red" />
                 </div>
-                <p className="text-center text-xl font-semibold mb-10">
+                <p className="text-center text-base font-semibold mb-14  h-[10px]">
                   {item.title}
                 </p>
                 <div className=" mb-10 ">

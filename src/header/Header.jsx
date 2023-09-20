@@ -4,12 +4,11 @@ import {
   fetchProducts,
   updateTotal,
 } from "../redux/features/productSlice/productSlice";
-
 import Filtermodal from "../filterModule/Filtermodal";
 import Cartmodal from "../cartmodal/Cartmodal";
 
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { PiMagnifyingGlassBold } from "react-icons/pi";
+// import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { IoIosArrowDown } from "react-icons/io";
 import logo from "../../public/images/logo.png";
 import { Link } from "react-router-dom";
@@ -20,7 +19,7 @@ export const Header = () => {
   const [show, setShow] = useState(true);
   const [showCart, setShowCart] = useState(true);
   const dispatch = useDispatch();
-  const { cart, amount } = useSelector((state) => state.product);
+  const { data, cart, amount } = useSelector((state) => state.product);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -33,7 +32,7 @@ export const Header = () => {
   const searchHandler = (e) => {
     const inputData = e.target.value;
     setSearch(inputData);
-    const showData = myData.filter((items) =>
+    const showData = data.filter((items) =>
       items.category.toLowerCase().includes(search.toLowerCase())
     );
     setSearchMyData(showData);
@@ -70,13 +69,13 @@ export const Header = () => {
 
   return (
     <>
-      <div className="w-full flex justify-center items-center bg-white opacity-90 fixed z-50 top-[0px] pb-4 shadow-md ">
+      <div className="w-full flex justify-center items-center bg-white opacity-95 fixed z-50 top-[0px] pb-4 shadow-md ">
         <div className="flex justify-between items-center pt-8  w-[85%]   ">
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
 
-          <ul className=" text-xl font-semibold flex gap-2 overflow-hidden mr-10 ">
+          <ul className=" text-base font-semibold flex gap-2 overflow-hidden mr-10 ">
             <Link to="/">
               <li className="hover:text-primery cursor-pointer border border-transparent hover:border px-8 py-2 hover:border-primery rounded-3xl transition duration-300 flex items-center gap-1">
                 Home
@@ -84,16 +83,16 @@ export const Header = () => {
               </li>
             </Link>
 
-            <li className="hover:text-primery cursor-pointer border border-transparent hover:border px-8 py-2 hover:border-primery rounded-3xl transition duration-300 flex items-center gap-1">
-              2023 Hot Products
+            <li className="hover:text-primery cursor-pointer border border-transparent hover:border px-4 py-2 hover:border-primery rounded-3xl transition duration-300 flex items-center gap-1">
+              Jewelery Products
               <IoIosArrowDown size={10} />
             </li>
-            <li className="hover:text-primery cursor-pointer border border-transparent hover:border px-8 py-2 hover:border-primery rounded-3xl transition duration-300 flex items-center gap-1">
-              2023 New Products
+            <li className="hover:text-primery cursor-pointer border border-transparent hover:border px-4 py-2 hover:border-primery rounded-3xl transition duration-300 flex items-center gap-1">
+              Electronics Products
               <IoIosArrowDown size={10} />
             </li>
-            <li className="hover:text-primery cursor-pointer border border-transparent hover:border px-8 py-2 hover:border-primery rounded-3xl transition duration-300 ease-in-out flex items-center gap-1">
-              2023 Special Products
+            <li className="hover:text-primery cursor-pointer border border-transparent hover:border px-4 py-2 hover:border-primery rounded-3xl transition duration-300 ease-in-out flex items-center gap-1">
+              Women's clothing
               <IoIosArrowDown size={10} />
             </li>
           </ul>
@@ -103,7 +102,7 @@ export const Header = () => {
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                   <svg
-                    className="w-4 h-4 text-primery dark:text-gray-400"
+                    className="w-4 h-4  text-primery dark:text-gray-400"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -123,8 +122,9 @@ export const Header = () => {
                   value={search}
                   onChange={searchHandler}
                   onClick={showHandler}
+                  autocomplete="off"
                   id="default-search"
-                  className="block w-full p-[6px] pl-14 text-sm text-gray-900 border rounded-lg bg-[#fff] focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="block w-full p-[2px] pl-7 text-sm text-gray-900 border rounded-lg bg-[#fff] focus:ring-blue-500 focus:border-blue-500    dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
               </div>
@@ -133,28 +133,18 @@ export const Header = () => {
             {/* <Link to="/cartpage"> */}
             <div className="relative">
               <AiOutlineShoppingCart
-                size={30}
+                size={25}
                 className="cursor-pointer text-[#6c757d] hover:text-primery"
                 // onMouseOver={MouseOver}
                 // onMouseOut={MouseOut}
                 onClick={showHandlerCart}
               />
-              <span className="px-[8px] py-[2px] rounded-full bg-primery absolute bottom-5 left-4 text-white">
+              <span className="px-[4px] py-[1px] text-xs rounded-full bg-primery absolute bottom-5 left-4 text-white">
                 {amount}
               </span>
             </div>
             {/* </Link> */}
           </div>
-        </div>
-        <div
-          // style={{
-          //   display: ishover ? "block" : "none",
-          // }}
-          style={{
-            display: showCart ? "none" : "",
-          }}
-        >
-          <Cartmodal cart={cart} />
         </div>
       </div>
       <div
@@ -163,6 +153,13 @@ export const Header = () => {
         }}
       >
         <Filtermodal searchMyData={searchMyData} />
+      </div>
+      <div
+        style={{
+          display: showCart ? "none" : "",
+        }}
+      >
+        <Cartmodal cart={cart} />
       </div>
     </>
   );

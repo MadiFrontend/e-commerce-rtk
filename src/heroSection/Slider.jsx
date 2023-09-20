@@ -1,6 +1,6 @@
 import React from "react";
 // import slider1 from "../../public/images/slider1.jpg";
-import Card from "../card/Card";
+import Cards from "../card/Cards";
 import { register } from "swiper/element/bundle";
 
 register();
@@ -40,10 +40,9 @@ function Slider() {
           />
         </swiper-slide>
       </swiper-container>
-
-      <Card filterName="jewelery" titleName="Jewelery Products" />
-      <Card filterName="electronics" titleName="Electronics Products" />
-      <Card filterName="women's clothing" titleName="Women's clothing" />
+      <div>
+        <Cards />
+      </div>
     </div>
   );
 }

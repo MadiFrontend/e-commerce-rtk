@@ -6,6 +6,7 @@ import {
 } from "../redux/features/productSlice/productSlice";
 
 import Filtermodal from "../filterModule/Filtermodal";
+import Cartmodal from "../cartmodal/Cartmodal";
 
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
@@ -17,6 +18,7 @@ export const Header = () => {
   const [search, setSearch] = useState(" ");
   const [searchMyData, setSearchMyData] = useState([]);
   const [show, setShow] = useState(true);
+  const [showCart, setShowCart] = useState(true);
   const dispatch = useDispatch();
   const { cart, amount } = useSelector((state) => state.product);
 
@@ -39,7 +41,32 @@ export const Header = () => {
 
   const showHandler = () => {
     setShow((current) => !current);
+    !showCart ? setShowCart((current) => !current) : "";
   };
+  const showHandlerCart = () => {
+    setShowCart((current) => !current);
+    !show ? setShow((current) => !current) : "";
+  };
+
+  // const [isActive, setIsActive] = useState(false);
+
+  // const handleDisplayOn = (id) =>
+
+  //   // 👇️ toggle
+  //   setIsActive((a) => !a);
+  // };
+  // const handleDisplayOut = (id) => {
+
+  //   setIsActive((a) => !a);
+  // };
+  // const [ishover, sethover] = useState(false);
+
+  // function MouseOver() {
+  //   sethover(true);
+  // }
+  // function MouseOut() {
+  //   sethover(false);
+  // }
 
   return (
     <>
@@ -103,18 +130,31 @@ export const Header = () => {
               </div>
             </form>
 
-            <Link to="/cartpage">
-              <div className="relative">
-                <AiOutlineShoppingCart
-                  size={30}
-                  className="cursor-pointer text-[#6c757d] hover:text-primery"
-                />
-                <span className="px-[8px] py-[2px] rounded-full bg-primery absolute bottom-5 left-4 text-white">
-                  {amount}
-                </span>
-              </div>
-            </Link>
+            {/* <Link to="/cartpage"> */}
+            <div className="relative">
+              <AiOutlineShoppingCart
+                size={30}
+                className="cursor-pointer text-[#6c757d] hover:text-primery"
+                // onMouseOver={MouseOver}
+                // onMouseOut={MouseOut}
+                onClick={showHandlerCart}
+              />
+              <span className="px-[8px] py-[2px] rounded-full bg-primery absolute bottom-5 left-4 text-white">
+                {amount}
+              </span>
+            </div>
+            {/* </Link> */}
           </div>
+        </div>
+        <div
+          // style={{
+          //   display: ishover ? "block" : "none",
+          // }}
+          style={{
+            display: showCart ? "none" : "",
+          }}
+        >
+          <Cartmodal cart={cart} />
         </div>
       </div>
       <div

@@ -2,7 +2,7 @@ import React from "react";
 
 const Filtermodal = ({ searchMyData }) => {
   return (
-    <div className="bg-white w-[28%] h-[900px] shadow-2xl border rounded-2xl fixed right-[50px] top-[12%] overflow-y-scroll scrollbar-hide ">
+    <div className="bg-white w-[28%] h-[900px] shadow-2xl border rounded-2xl fixed z-30 right-[50px] top-[12%] overflow-y-scroll scrollbar-hide ">
       {searchMyData.map((search) => {
         return (
           <div className="flex items-center my-10 hover:shadow-sm pb-1 cursor-pointer pr-2">

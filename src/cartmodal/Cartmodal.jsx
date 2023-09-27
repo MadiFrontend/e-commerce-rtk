@@ -20,7 +20,9 @@ const Cartmodal = ({ cart }) => {
               key={search.id}
             >
               <div className="w-[90px] h-[70px] mx-5">
-                <img src={search.image} alt="" className="w-full h-full" />
+                <Link to={`/products/${search.id}`}>
+                  <img src={search.image} alt="" className="w-full h-full" />
+                </Link>
               </div>
               <div className=" w-[80%] flex flex-col gap-4">
                 <p className=" ">{search.title}</p>

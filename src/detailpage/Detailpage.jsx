@@ -10,7 +10,7 @@ function Detailpage() {
   const { productId } = useParams();
 
   const singlePost = data.find((item) => item.id === parseInt(productId));
-  console.log(singlePost);
+  console.log(productId);
   return (
     <div
       className="overflow-x-hidden mt-32 w-full h-[450px]  "

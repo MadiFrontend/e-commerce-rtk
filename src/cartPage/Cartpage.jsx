@@ -44,11 +44,13 @@ function Cartpage() {
                   key={item.id}
                 >
                   <div className="w-[150px] h-[150px] mr-10 bg-red-500">
-                    <img
-                      src={item.image}
-                      alt="image"
-                      className="w-full h-full"
-                    />
+                    <Link to={`/products/${item.id}`}>
+                      <img
+                        src={item.image}
+                        alt="image"
+                        className="w-full h-full"
+                      />
+                    </Link>
                   </div>
                   <div className="w-[50%]">
                     <p className="font-bold text-2xl  ">{item.title}</p>

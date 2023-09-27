@@ -68,7 +68,6 @@ const productSlice = createSlice({
     },
     removeCartItems: (state) => {
       state.cart = [];
-      console.log(state.cart);
     },
   },
 

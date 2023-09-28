@@ -87,20 +87,24 @@ function Cartpage() {
               );
             })
           )}
-        </div>
-        <div className="w-[25%] h-[293px] flex flex-col items-center justify-evenly fixed right-0 mr-24  border-[2px] border-[#eee]">
-          <h2 className="font-bold text-[50px]">Total Price</h2>
-          <h2 className="font-bold text-primery text-[35px]">
-            ${parseFloat(total).toFixed(2)}
-          </h2>
-          <Link to="/finalpage">
-            <button
-              className="border border-primery text-primery px-6 py-2 text-[20px] rounded-[10px] mt-3 hover:bg-primery hover:text-white"
-              onClick={() => dispatch(removeCartItems())}
-            >
-              Purchase!
-            </button>
-          </Link>
+          {mainData.length !== 0 ? (
+            <div className="w-[25%] h-[293px] flex flex-col items-center justify-evenly fixed right-0 mr-24  border-[2px] border-[#eee]">
+              <h2 className="font-bold text-[50px]">Total Price</h2>
+              <h2 className="font-bold text-primery text-[35px]">
+                ${parseFloat(total).toFixed(2)}
+              </h2>
+              <Link to="/finalpage">
+                <button
+                  className="border border-primery text-primery px-6 py-2 text-[20px] rounded-[10px] mt-3 hover:bg-primery hover:text-white"
+                  onClick={() => dispatch(removeCartItems())}
+                >
+                  Purchase!
+                </button>
+              </Link>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

@@ -31,12 +31,12 @@ function Card(props) {
 
   return (
     <div className="mb-28 w-[100%] ">
-      <div>
+      <div className="text-center xl:mx-5">
         <Title>
           <b>2023</b> {props.titleName}
         </Title>
       </div>
-      <div className="grid grid-cols sm:grid-cols md:grid-cols-4 gap-5">
+      <div className="grid grid-cols justify-center md:grid-cols-4  gap-5">
         {mainData
           .filter((cat) => cat.category === props.filterName)
           .slice(0, 4)

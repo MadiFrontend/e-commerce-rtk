@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProducts,
@@ -8,7 +8,6 @@ import Filtermodal from "../filterModule/Filtermodal";
 import Cartmodal from "../cartmodal/Cartmodal";
 
 import { AiOutlineShoppingCart } from "react-icons/ai";
-// import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { IoIosArrowDown } from "react-icons/io";
 import logo from "../../public/images/logo.png";
 import { Link } from "react-router-dom";
@@ -16,8 +15,8 @@ import { Link } from "react-router-dom";
 export const Header = () => {
   const [search, setSearch] = useState(" ");
   const [searchMyData, setSearchMyData] = useState([]);
-  const [show, setShow] = useState(true);
-  const [showCart, setShowCart] = useState(true);
+  const [shown, setShown] = useState(false);
+
   const dispatch = useDispatch();
   const { data, cart, amount } = useSelector((state) => state.product);
 
@@ -33,39 +32,14 @@ export const Header = () => {
     const inputData = e.target.value;
     setSearch(inputData);
     const showData = data.filter((items) =>
-      items.category.toLowerCase().includes(search.toLowerCase())
+      items.title.toLowerCase().includes(search.toLowerCase())
     );
-    setSearchMyData(showData);
+    if (inputData) {
+      setSearchMyData(showData);
+    } else {
+      setSearchMyData([]);
+    }
   };
-
-  const showHandler = () => {
-    setShow((current) => !current);
-    !showCart ? setShowCart((current) => !current) : "";
-  };
-  const showHandlerCart = () => {
-    setShowCart((current) => !current);
-    !show ? setShow((current) => !current) : "";
-  };
-
-  // const [isActive, setIsActive] = useState(false);
-
-  // const handleDisplayOn = (id) =>
-
-  //   // 👇️ toggle
-  //   setIsActive((a) => !a);
-  // };
-  // const handleDisplayOut = (id) => {
-
-  //   setIsActive((a) => !a);
-  // };
-  // const [ishover, sethover] = useState(false);
-
-  // function MouseOver() {
-  //   sethover(true);
-  // }
-  // function MouseOut() {
-  //   sethover(false);
-  // }
 
   return (
     <>
@@ -121,7 +95,7 @@ export const Header = () => {
                   placeholder="Search..."
                   value={search}
                   onChange={searchHandler}
-                  onClick={showHandler}
+                  // onClick={showHandler}
                   autocomplete="off"
                   id="default-search"
                   className="block w-full p-[2px] pl-7  text-sm text-gray-900 border rounded-lg bg-[#fff] focus:ring-blue-500 focus:border-blue-500    dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -135,9 +109,9 @@ export const Header = () => {
               <AiOutlineShoppingCart
                 size={25}
                 className="cursor-pointer text-[#6c757d] hover:text-primery"
-                // onMouseOver={MouseOver}
-                // onMouseOut={MouseOut}
-                onClick={showHandlerCart}
+                onClick={() => {
+                  setShown(!shown);
+                }}
               />
               <span className="px-[4px] py-[1px] text-xs rounded-full bg-primery absolute bottom-5 left-4 text-white">
                 {amount}
@@ -147,19 +121,21 @@ export const Header = () => {
           </div>
         </div>
       </div>
-      <div
-        style={{
-          display: show ? "none" : "",
-        }}
-      >
+      <div>
         <Filtermodal searchMyData={searchMyData} />
       </div>
       <div
-        style={{
-          display: showCart ? "none" : "",
-        }}
+      // style={{
+      //   display: showCart ? "none" : "",
+      // }}
       >
-        <Cartmodal cart={cart} />
+        <Cartmodal
+          cart={cart}
+          shown={shown}
+          close={() => {
+            setShown(false);
+          }}
+        />
       </div>
     </>
   );

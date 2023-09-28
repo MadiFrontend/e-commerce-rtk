@@ -14,9 +14,9 @@ function App() {
   /* Component */
 
   return (
-    <div className="flex flex-col items-center justify-center text-[#222] ">
+    <div className="flex flex-col items-center justify-center text-[#222]   ">
       <Header />
-      <div className=" text-myFont w-[85%] ">
+      <div className=" text-myFont w-[85%] overflow-x-hidden ">
         <Routes>
           <Route path="/" element={<Slider />} />
           <Route path="/products" element={<Cards />} />

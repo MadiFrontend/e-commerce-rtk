@@ -1,22 +1,13 @@
 import { Outlet } from "react-router-dom";
-import { Header } from "../header/Header";
 
 function MainLayout() {
   return (
-    <div className="grid grid-rows-[200px, 1fr, 200px] text-[#222]">
-      <Header />
-      <main className=" text-myFont  ">
-        {/* <Routes>
-          <Route path="/" element={<Slider />} />
-          <Route path="/products" element={<Cards />} />
-          <Route path="/cartpage" element={<Cartpage />} />
-          <Route path="/finalpage" element={<Finalpage />} />
-          <Route path="/contactus" element={<ContactUs />} />
-          <Route path="products/:productId" element={<Detailpage />} />
-        </Routes> */}
+    <div className="min-h-screen grid grid-rows-[90px_1fr_auto] text-[#222] text-myFont ">
+      <div className="bg-black">.</div>
+      <main className="container">
         <Outlet />
       </main>
-      <footer className="bg-red ">hi this is footer</footer>
+      <footer className="w-full bg-gray-300 ">hi this is footer</footer>
     </div>
   );
 }

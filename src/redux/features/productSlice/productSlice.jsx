@@ -1,9 +1,22 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { BASE_URL } from "../../../api/url";
+
+// the real one
+
+// export const fetchProducts = createAsyncThunk(
+//   "productSlice/fetchProducts",
+//   async () => {
+//     const res = await axios.get("https://fakestoreapi.com/products");
+//     return res.data;
+//   }
+// );
+
+// just for test
 export const fetchProducts = createAsyncThunk(
   "productSlice/fetchProducts",
   async () => {
-    const res = await axios.get("https://fakestoreapi.com/products");
+    const res = await axios.get(`${BASE_URL}products`);
     return res.data;
   }
 );
@@ -67,7 +80,7 @@ const productSlice = createSlice({
     });
     bulider.addCase(fetchProducts.fulfilled, (state, action) => {
       state.loading = false;
-      state.data = action.payload;
+      state.data = action.payload.products;
     });
     bulider.addCase(fetchProducts.rejected, (state, action) => {
       state.loading = false;

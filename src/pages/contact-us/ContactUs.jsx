@@ -12,8 +12,11 @@ function ContactUs() {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full h-screen flex flex-col justify-center items-center "
+      >
         {/* register your input into the hook by invoking the "register" function */}
         <input defaultValue="test" {...register("example")} />
 
@@ -24,7 +27,7 @@ function ContactUs() {
 
         <input type="submit" />
       </form>
-    </div>
+    </>
   );
 }
 

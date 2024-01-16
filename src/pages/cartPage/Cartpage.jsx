@@ -8,7 +8,7 @@ import {
   removeItem,
   removeCartItems,
 } from "../../redux/features/productSlice/productSlice";
-import Title from "../../components/tilte/Title";
+import Title from "../../components/title/Title";
 import { Link } from "react-router-dom";
 
 function Cartpage() {
@@ -21,12 +21,10 @@ function Cartpage() {
   }, []);
 
   return (
-    <div>
-      <div className="mt-28">
-        <Title>Shopping Cart</Title>
-      </div>
-      <div className="flex">
-        <div className="grid w-[100%] grid-cols sm:grid-cols md:grid-cols-1 gap-5  mb-28">
+    <>
+      <Title>Shopping Cart</Title>
+      <div className="flex justify-between">
+        <div className="grid w-[100%] grid-cols sm:grid-cols md:grid-cols-1 gap-5 mb-12 ">
           {mainData.length === 0 ? (
             <div className="flex flex-col justify-center items-center text-2xl ">
               <h2>Your Cart Is Empty!</h2>
@@ -40,7 +38,7 @@ function Cartpage() {
             mainData.map((item) => {
               return (
                 <div
-                  className="border p-5 flex justify-between items-center w-[70%] "
+                  className="border p-5 flex justify-between items-center w-[95%] "
                   key={item.id}
                 >
                   <div className="w-[150px] h-[150px] mr-10 bg-red-500">
@@ -87,27 +85,28 @@ function Cartpage() {
               );
             })
           )}
-          {mainData.length !== 0 ? (
-            <div className="w-[25%] h-[293px] flex flex-col items-center justify-evenly fixed right-0 mr-24  border-[2px] border-[#eee]">
-              <h2 className="font-bold text-[50px]">Total Price</h2>
-              <h2 className="font-bold text-primery text-[35px]">
-                ${parseFloat(total).toFixed(2)}
-              </h2>
-              <Link to="/finalpage">
-                <button
-                  className="border border-primery text-primery px-6 py-2 text-[20px] rounded-[10px] mt-3 hover:bg-primery hover:text-white"
-                  onClick={() => dispatch(removeCartItems())}
-                >
-                  Purchase!
-                </button>
-              </Link>
-            </div>
-          ) : (
-            ""
-          )}
         </div>
+
+        {mainData.length !== 0 ? (
+          <div className="w-[35%] h-[293px] flex flex-col items-center justify-evenly sticky top-32 z-12 ml-auto border-[2px] border-[#eee] mb-12">
+            <h2 className="font-bold text-[50px]">Total Price</h2>
+            <h2 className="font-bold text-primery text-[35px]">
+              ${parseFloat(total).toFixed(2)}
+            </h2>
+            <Link to="/finalpage">
+              <button
+                className="border border-primery text-primery px-6 py-2 text-[20px] rounded-[10px] mt-3 hover:bg-primery hover:text-white"
+                onClick={() => dispatch(removeCartItems())}
+              >
+                Purchase!
+              </button>
+            </Link>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
-    </div>
+    </>
   );
 }
 

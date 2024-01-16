@@ -1,8 +1,9 @@
 import React from "react";
-import { removeItem } from "../redux/features/productSlice/productSlice";
+
 import { useDispatch } from "react-redux";
 import { BsFillTrashFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { removeItem } from "../../redux/features/productSlice/productSlice";
 
 const Cartmodal = ({ cart, shown, close }) => {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ const Cartmodal = ({ cart, shown, close }) => {
   return shown ? (
     <div className="modal-backdrop" onClick={() => close()}>
       <div
-        className="bg-white w-[22%] h-[500px]  shadow-2xl border rounded-2xl fixed z-50 right-[15px] top-[95px] overflow-y-scroll scrollbar-hide "
+        className="bg-white w-[22%] h-[450px]  shadow-2xl border rounded-2xl fixed z-50 right-[15px] top-[90px] overflow-y-scroll scrollbar-hide "
         onClick={(e) => {
           e.stopPropagation();
         }}

@@ -1,16 +1,15 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Filtermodal from "../filterModule/Filtermodal";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { IoIosArrowDown } from "react-icons/io";
+import logo from "/images/logo.png";
+import { Link } from "react-router-dom";
 import {
   fetchProducts,
   updateTotal,
-} from "../redux/features/productSlice/productSlice";
-import Filtermodal from "../filterModule/Filtermodal";
+} from "../../redux/features/productSlice/productSlice";
 import Cartmodal from "../cartmodal/Cartmodal";
-
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { IoIosArrowDown } from "react-icons/io";
-import logo from "../../public/images/logo.png";
-import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [search, setSearch] = useState(" ");
@@ -43,8 +42,8 @@ export const Header = () => {
 
   return (
     <>
-      <header className="w-full flex justify-center items-center bg-white opacity-95 shadow-md fixed z-10 py-4 ">
-        <div className="flex justify-between items-center container  ">
+      <header className="w-full flex justify-center items-center bg-white opacity-95 shadow-md sticky top-0 z-10">
+        <div className="flex justify-between items-center container   ">
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
@@ -98,7 +97,7 @@ export const Header = () => {
                   // onClick={showHandler}
                   autoComplete="off"
                   id="default-search"
-                  className="block w-full p-[2px] pl-7  text-sm text-gray-900 border rounded-lg bg-[#fff] focus:ring-blue-500 focus:border-blue-500    dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="block w-full p-[2px] pl-10  text-sm text-gray-900 border rounded-lg bg-[#fff] focus:ring-blue-500 focus:border-blue-500    dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
               </div>
@@ -121,22 +120,20 @@ export const Header = () => {
           </div>
         </div>
       </header>
-      <div>
-        <Filtermodal searchMyData={searchMyData} />
-      </div>
-      <div
-      // style={{
-      //   display: showCart ? "none" : "",
-      // }}
-      >
-        <Cartmodal
-          cart={cart}
-          shown={shown}
-          close={() => {
-            setShown(false);
-          }}
-        />
-      </div>
+      <Filtermodal
+        searchMyData={searchMyData}
+        shown={shown}
+        close={() => {
+          setShown(false);
+        }}
+      />
+      <Cartmodal
+        cart={cart}
+        shown={shown}
+        close={() => {
+          setShown(false);
+        }}
+      />
     </>
   );
 };

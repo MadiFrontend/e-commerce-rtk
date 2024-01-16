@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { addToCart } from "../../redux/features/productSlice/productSlice";
-import { useState } from "react";
 
 function Detailpage() {
   const navigat = useNavigate();
@@ -12,16 +11,13 @@ function Detailpage() {
   const singlePost = data.find((item) => item.id === parseInt(productId));
   console.log(productId);
   return (
-    <div
-      className="overflow-x-hidden mt-32 w-full h-[450px]  "
-      key={singlePost.id}
-    >
-      <div className="w-full h-full flex">
-        <div className="  w-[50%] h-full overflow-hidden ">
+    <div className="h-full ">
+      <div className="flex justify-between items-center" key={singlePost.id}>
+        <div className="overflow-hidden w-[50%] h-[50%] ">
           <img
-            src={singlePost.image}
-            alt="productImage "
-            className="w-[70%] h-full "
+            src={singlePost.images[0]}
+            alt="productImage"
+            className="w-[50%] h-[30%]"
           />
         </div>
         <div className="w-[50%] h-[100%]  flex flex-col gap-10">

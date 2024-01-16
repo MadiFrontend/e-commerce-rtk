@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 function Finalpage() {
   return (
-    <div>
-      <div className="w-full h-screen flex flex-col justify-center items-center gap-5 ">
+    <>
+      <div className="w-full h-full flex flex-col justify-center items-center gap-5 ">
         <div className=" flex text-4xl font-bold gap-5 ">
           <MdOutlineDone color="green" />
           <h2>Thanks For Your Shopping !</h2>
@@ -16,7 +16,7 @@ function Finalpage() {
           </button>
         </Link>
       </div>
-    </div>
+    </>
   );
 }
 

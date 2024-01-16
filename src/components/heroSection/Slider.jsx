@@ -3,7 +3,7 @@ register();
 
 function Slider() {
   return (
-    <div className="w-full mt-16 pt-16">
+    <div className="w-full">
       <swiper-container
         speed="500"
         loop="true"

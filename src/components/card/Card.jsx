@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Title from "../tilte/Title";
 import { IoIosStarOutline } from "react-icons/io";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts } from "../redux/features/productSlice/productSlice";
-import { addToCart } from "../redux/features/productSlice/productSlice";
 import { Link } from "react-router-dom";
+import Title from "../tilte/Title";
+import {
+  addToCart,
+  fetchProducts,
+} from "../../redux/features/productSlice/productSlice";
 
 function Card(props) {
   const dispatch = useDispatch();
@@ -13,21 +15,6 @@ function Card(props) {
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
-  /* Links */
-
-  // const [isActive, setIsActive] = useState(false);
-
-  // const handleDisplayOn = (id) => {
-  //   // const a = mainData.filter((item) => item.id === id);
-
-  //   // 👇️ toggle
-  //   setIsActive((a) => !a);
-  // };
-  // const handleDisplayOut = (id) => {
-  //   // const a = mainData.filter((item) => item.id === id);
-  //   // 👇️ toggle
-  //   setIsActive((a) => !a);
-  // };
 
   return (
     <div className="mb-28 w-[100%] ">
@@ -44,8 +31,6 @@ function Card(props) {
             return (
               <div
                 className="flex flex-col items-center justify-around w-[280px] h-[500px] bg-white border rounded-[40px] overflow-hidden hover:shadow-lg cursor-pointer "
-                // onMouseOver={() => handleDisplayOn(item.id)}
-                // onMouseOut={() => handleDisplayOut(item.id)}
                 key={item.id}
               >
                 <Link to={`/products/${item.id}`}>
@@ -66,20 +51,12 @@ function Card(props) {
                   {item.title}
                 </p>
                 <div className=" mb-10 ">
-                  <p
-                    className="text-primery text-center text-2xl font-bold mb-3  "
-                    // style={{
-                    //   display: isActive ? "none" : "",
-                    // }}
-                  >
+                  <p className="text-primery text-center text-2xl font-bold mb-3  ">
                     ${item.price}
                   </p>
                   <button
                     className="border bg-white text-black rounded-2xl w-[150px] h-[50px]  justify-center items-center  hover:bg-primery hover:text-white transition-all ease-linear duration-300  "
                     id="abc"
-                    // style={{
-                    //   display: isActive ? "flex" : "",
-                    // }}
                     onClick={() =>
                       dispatch(
                         addToCart({

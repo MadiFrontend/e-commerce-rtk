@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts } from "../redux/features/productSlice/productSlice";
+import { fetchProducts } from "../../redux/features/productSlice/productSlice";
 import { BsFillTrashFill } from "react-icons/bs";
 import {
   incrementQuantity,
   decrementQuantity,
   removeItem,
   removeCartItems,
-} from "../redux/features/productSlice/productSlice";
-import Title from "../tilte/Title";
+} from "../../redux/features/productSlice/productSlice";
+import Title from "../../components/tilte/Title";
 import { Link } from "react-router-dom";
 
 function Cartpage() {

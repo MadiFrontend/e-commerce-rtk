@@ -1,8 +1,4 @@
-import React from "react";
-// import slider1 from "../../public/images/slider1.jpg";
-import Cards from "../card/Cards";
 import { register } from "swiper/element/bundle";
-
 register();
 
 function Slider() {
@@ -17,25 +13,6 @@ function Slider() {
           "--swiper-pagination-color": "#fff",
           "--swiper-navigation-color": "#fff",
         }}
-        // slidesPerView={1}
-        // spaceBetween={10}
-        // pagination={{
-        //   clickable: true,
-        // }}
-        // breakpoints={{
-        //   640: {
-        //     slidesPerView: 2,
-        //     spaceBetween: 20,
-        //   },
-        //   768: {
-        //     slidesPerView: 4,
-        //     spaceBetween: 40,
-        //   },
-        //   1024: {
-        //     slidesPerView: 5,
-        //     spaceBetween: 50,
-        //   },
-        // }}
       >
         <swiper-slide>
           <img
@@ -59,9 +36,6 @@ function Slider() {
           />
         </swiper-slide>
       </swiper-container>
-      <div>
-        <Cards />
-      </div>
     </div>
   );
 }

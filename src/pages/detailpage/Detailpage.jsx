@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { addToCart } from "../redux/features/productSlice/productSlice";
+import { addToCart } from "../../redux/features/productSlice/productSlice";
 import { useState } from "react";
 
 function Detailpage() {

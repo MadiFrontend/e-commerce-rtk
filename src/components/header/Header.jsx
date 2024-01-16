@@ -43,8 +43,8 @@ export const Header = () => {
 
   return (
     <>
-      <div className="w-full flex justify-center items-center bg-white opacity-95 fixed z-50 top-[0px] pb-4 shadow-md ">
-        <div className="flex justify-between items-center pt-8  w-[85%]   ">
+      <header className="w-full flex justify-center items-center bg-white opacity-95 shadow-md fixed z-10 py-4 ">
+        <div className="flex justify-between items-center container  ">
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
@@ -120,7 +120,7 @@ export const Header = () => {
             {/* </Link> */}
           </div>
         </div>
-      </div>
+      </header>
       <div>
         <Filtermodal searchMyData={searchMyData} />
       </div>

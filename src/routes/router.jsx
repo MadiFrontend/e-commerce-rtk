@@ -1,12 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import Slider from "./heroSection/Slider";
-import Cards from "./card/Cards";
-import Cartpage from "./cartPage/Cartpage";
-import Finalpage from "./Finalpage/Finalpage";
-import ContactUs from "./contact-us/ContactUs";
-import Detailpage from "./Detailpage/Detailpage";
-import MainLayouts from "./layouts/MainLayout";
-import MainLayout from "./layouts/MainLayout";
+import Slider from "../components/heroSection/Slider";
+
+import MainLayout from "../layouts/MainLayout";
+import Cartpage from "../pages/cartPage/Cartpage";
+import Finalpage from "../pages/Finalpage/Finalpage";
+import Detailpage from "../pages/Detailpage/Detailpage";
+import ContactUs from "../pages/contact-us/ContactUs";
+import Page from "../pages/page";
+import Cards from "../components/card/Cards";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Slider />,
+        element: <Page />,
       },
       {
         path: "products",

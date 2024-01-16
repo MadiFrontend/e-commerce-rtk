@@ -28,7 +28,7 @@ function Card(props) {
         {mainData.slice(0, 4).map((item) => {
           return (
             <div
-              className="flex flex-col items-center justify-around w-[280px] h-[500px] bg-white border rounded-[40px] overflow-hidden hover:shadow-lg cursor-pointer "
+              className=" flex flex-col items-center justify-around w-[280px] h-[500px] bg-white border rounded-[40px] overflow-hidden hover:shadow-lg cursor-pointer  transition duration-500   "
               key={item.id}
             >
               <Link to={`/products/${item.id}`}>

@@ -64,10 +64,10 @@ export const Header = () => {
               Electronics Products
               <IoIosArrowDown size={10} />
             </li>
-            <li className="hover:text-primery cursor-pointer border border-transparent hover:border px-4 py-2 hover:border-primery rounded-3xl transition duration-300 ease-in-out flex items-center gap-1">
+            {/* <li className="hover:text-primery cursor-pointer border border-transparent hover:border px-4 py-2 hover:border-primery rounded-3xl transition duration-300 ease-in-out flex items-center gap-1">
               Women's clothing
               <IoIosArrowDown size={10} />
-            </li>
+            </li> */}
           </ul>
 
           <div className="flex gap-10 ">

@@ -96,7 +96,7 @@ export const Header = () => {
                   value={search}
                   onChange={searchHandler}
                   // onClick={showHandler}
-                  autocomplete="off"
+                  autoComplete="off"
                   id="default-search"
                   className="block w-full p-[2px] pl-7  text-sm text-gray-900 border rounded-lg bg-[#fff] focus:ring-blue-500 focus:border-blue-500    dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required

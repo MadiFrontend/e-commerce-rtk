@@ -1,6 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Slider from "../components/heroSection/Slider";
-
 import MainLayout from "../layouts/MainLayout";
 import Cartpage from "../pages/cartPage/Cartpage";
 import Finalpage from "../pages/Finalpage/Finalpage";
@@ -40,5 +38,4 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
 export default router;

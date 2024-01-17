@@ -35,7 +35,7 @@ function Card(props) {
                 <img
                   src={item.images[0]}
                   alt="aks"
-                  className="w-[200px] h-[170px] overflow-hidden mt-5"
+                  className="w-[200px] h-[170px] overflow-hidden mt-5 transition duration-300 ease-in-out hover:scale-110"
                 />
               </Link>
               <div className="flex justify-center">

@@ -7,7 +7,7 @@ function MainLayout() {
     <>
       <div className="min-h-screen grid grid-rows-[90px_1fr_auto] text-[#222] text-myFont ">
         <Header />
-        <main className="container mt-10">
+        <main className="container mt-10 min-h-[70vh]">
           <Outlet />
         </main>
         <Footer />

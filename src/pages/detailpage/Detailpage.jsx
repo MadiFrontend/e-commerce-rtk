@@ -15,7 +15,7 @@ function Detailpage() {
       <div className="flex justify-between items-center" key={singlePost.id}>
         <div className="overflow-hidden w-[50%] h-[50%] ">
           <img
-            src={singlePost.images[0]}
+            src={singlePost.image}
             alt="productImage"
             className="w-[50%] h-[30%]"
           />

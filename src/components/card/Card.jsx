@@ -22,7 +22,6 @@ function Card(props) {
         <Title>
           <b>2023</b> {props.titleName}
         </Title>
-        {console.log(mainData)}
       </div>
       <div className="grid grid-cols justify-center md:grid-cols-4  gap-5">
         {mainData

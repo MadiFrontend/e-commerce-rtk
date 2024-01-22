@@ -1,9 +1,11 @@
 import Slider from "../components/heroSection/Slider";
 import Cards from "../components/card/Cards";
+import HeroSection from "../components/heroSection/Hero-Section";
 function Page() {
   return (
     <>
-      <Slider />
+      {/* <Slider /> */}
+      <HeroSection />
       <div className="mt-16">
         <Cards />
       </div>

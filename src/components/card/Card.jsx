@@ -23,7 +23,7 @@ function Card(props) {
           <b>2023</b> {props.titleName}
         </Title>
       </div>
-      <div className="grid grid-cols justify-center md:grid-cols-4  gap-5">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {mainData
           .filter((cat) => cat.category === props.filterName)
           .slice(0, 4)

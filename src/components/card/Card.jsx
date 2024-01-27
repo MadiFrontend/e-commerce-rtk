@@ -20,7 +20,7 @@ function Card(props) {
     <div className="mb-28 w-[100%] ">
       <div className="text-center xl:mx-5">
         <Title>
-          <b>2023</b> {props.titleName}
+          <b>2024</b> {props.titleName}
         </Title>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">

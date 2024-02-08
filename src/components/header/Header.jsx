@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { IoIosArrowDown } from "react-icons/io";
+import { AiFillInstagram } from "react-icons/ai";
+import { BiLogoTelegram, BiLogoFacebook } from "react-icons/bi";
 import logo from "/images/logo.png";
 import { Link } from "react-router-dom";
 import {
@@ -9,12 +9,20 @@ import {
   updateTotal,
 } from "../../redux/features/productSlice/productSlice";
 import SearchIco from "../../assets/icons/searchIco";
+import Filtermodal from "../filterModule/Filtermodal";
+import Cartmodal from "../cartmodal/Cartmodal";
+import Navbar from "../navbar/Navbar";
 
 const navigationItems = [
   { title: "Home", href: "/" },
   { title: "About us", href: "/Aboutus" },
   { title: "Blog", href: "/blog" },
   { title: "Contact us", href: "/contactus" },
+];
+const SmIcons = [
+  { comp: <AiFillInstagram size={20} color="gray" /> },
+  { comp: <BiLogoFacebook size={20} color="gray" /> },
+  { comp: <BiLogoTelegram size={20} color="gray" /> },
 ];
 
 export const Header = () => {
@@ -48,10 +56,10 @@ export const Header = () => {
 
   return (
     <>
-      <header className="w-full flex justify-center items-center bg-white opacity-95 shadow-md sticky top-0 z-10">
+      <header className="w-full flex justify-center items-center bg-white shadow-md sticky top-0 z-10">
         <div className="flex justify-between items-center container">
           <Link to="/">
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="logo" width={150} />
           </Link>
 
           <form>
@@ -64,10 +72,9 @@ export const Header = () => {
                 placeholder="Search..."
                 value={search}
                 onChange={searchHandler}
-                // onClick={showHandler}
                 autoComplete="off"
                 id="default-search"
-                className=" w-full py-[6px] pr-12 pl-2 outline-none text-sm text-gray-900 border"
+                className="rounded-md py-[6px] pr-12 pl-2 outline-none text-sm text-gray-900 border"
                 required
               />
             </div>
@@ -81,29 +88,38 @@ export const Header = () => {
                   key={`id-${item.href}-${item.title}`}
                 >
                   {item.title}
-                  {/* <IoIosArrowDown size={10} /> */}
                 </li>
               </Link>
             ))}
           </ul>
 
-          <div className="flex gap-10 ">
-            {/* <Link to="/cartpage"> */}
-            <div className="relative">
-              <AiOutlineShoppingCart
-                size={25}
-                className="cursor-pointer text-[#6c757d] hover:text-primery"
-                onClick={() => {
-                  setShown(!shown);
-                }}
-              />
-              <span className="px-[4px] py-[1px] text-xs rounded-full bg-primery absolute bottom-5 left-4 text-white">
-                {amount}
+          <div className="flex gap-2 ">
+            {SmIcons.map((item) => (
+              <span
+                onMouseOver={({ target }) => (target.style.color = "#4E66EC")}
+                onMouseOut={({ target }) => (target.style.color = "gray")}
+              >
+                {item.comp}
               </span>
-            </div>
+            ))}
           </div>
         </div>
       </header>
+      <Navbar />
+      <Filtermodal
+        searchMyData={searchMyData}
+        shown={shown}
+        close={() => {
+          setShown(false);
+        }}
+      />
+      <Cartmodal
+        cart={cart}
+        shown={shown}
+        close={() => {
+          setShown(false);
+        }}
+      />
     </>
   );
 };

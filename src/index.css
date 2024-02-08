@@ -3,6 +3,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -12,5 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 90;
+  z-index: 2;
+  background-color: black;
+  opacity: 30%;
 }

@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useDispatch } from "react-redux";
 import { BsFillTrashFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -9,15 +8,18 @@ const Cartmodal = ({ cart, shown, close }) => {
   const dispatch = useDispatch();
 
   return shown ? (
-    <div className="modal-backdrop" onClick={() => close()}>
+    <>
+      <div className="modal-backdrop" onClick={() => close()}>
+        {" "}
+      </div>
       <div
-        className="bg-white w-[22%] h-[450px]  shadow-2xl border rounded-2xl fixed z-50 right-[15px] top-[90px] overflow-y-scroll scrollbar-hide "
+        className="bg-white w-[22%] h-[450px]  shadow-2xl border rounded-2xl absolute z-10 right-[15px] top-[90px] overflow-y-scroll scrollbar-hide "
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
         {cart.length === 0 ? (
-          <div className="h-full flex justify-center items-center text-2xl">
+          <div className="h-full flex justify-center items-center text-2xl text-black">
             <h2>Your Cart Is Empty!</h2>
           </div>
         ) : (
@@ -33,7 +35,9 @@ const Cartmodal = ({ cart, shown, close }) => {
                   </Link>
                 </div>
                 <div className=" w-[80%] flex flex-col gap-4">
-                  <p className=" ">{search.title}</p>
+                  <p className="text-black">
+                    {search.title.substring(0, 35)}...
+                  </p>
                   <div className="flex items-center gap-4">
                     <p className="text-primery font-bold mt-1 ">
                       ${search.price}
@@ -60,7 +64,7 @@ const Cartmodal = ({ cart, shown, close }) => {
           </div>
         ) : null}
       </div>
-    </div>
+    </>
   ) : (
     ""
   );

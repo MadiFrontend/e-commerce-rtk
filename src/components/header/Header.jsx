@@ -10,7 +10,6 @@ import {
 } from "../../redux/features/productSlice/productSlice";
 import SearchIco from "../../assets/icons/searchIco";
 import Filtermodal from "../filterModule/Filtermodal";
-import Cartmodal from "../cartmodal/Cartmodal";
 import Navbar from "../navbar/Navbar";
 
 const navigationItems = [
@@ -37,10 +36,6 @@ export const Header = () => {
     dispatch(fetchProducts());
   }, []);
 
-  useEffect(() => {
-    dispatch(updateTotal());
-  }, [dispatch, cart]);
-
   const searchHandler = (e) => {
     const inputData = e.target.value;
     setSearch(inputData);
@@ -56,7 +51,7 @@ export const Header = () => {
 
   return (
     <>
-      <header className="w-full flex justify-center items-center bg-white shadow-md sticky top-0 z-10">
+      <header className="w-full flex justify-center items-center bg-white shadow-md ">
         <div className="flex justify-between items-center container">
           <Link to="/">
             <img src={logo} alt="logo" width={150} />
@@ -96,6 +91,7 @@ export const Header = () => {
           <div className="flex gap-2 ">
             {SmIcons.map((item) => (
               <span
+                className="cursor-pointer"
                 onMouseOver={({ target }) => (target.style.color = "#4E66EC")}
                 onMouseOut={({ target }) => (target.style.color = "gray")}
               >
@@ -105,16 +101,9 @@ export const Header = () => {
           </div>
         </div>
       </header>
-      <Navbar />
+      <Navbar data={data} cart={cart} updateTotal={updateTotal} />
       <Filtermodal
         searchMyData={searchMyData}
-        shown={shown}
-        close={() => {
-          setShown(false);
-        }}
-      />
-      <Cartmodal
-        cart={cart}
         shown={shown}
         close={() => {
           setShown(false);

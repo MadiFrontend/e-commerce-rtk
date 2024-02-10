@@ -101,7 +101,7 @@ export const Header = () => {
           </div>
         </div>
       </header>
-      <Navbar data={data} cart={cart} updateTotal={updateTotal} />
+      <Navbar data={data} cart={cart} updateTotal={updateTotal} amount={amount} />
       <Filtermodal
         searchMyData={searchMyData}
         shown={shown}

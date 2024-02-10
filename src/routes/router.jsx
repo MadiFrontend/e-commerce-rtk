@@ -6,11 +6,16 @@ import Detailpage from "../pages/Detailpage/Detailpage";
 import ContactUs from "../pages/contact-us/ContactUs";
 import Page from "../pages/page";
 import Cards from "../components/card/Cards";
+import PageNotFound from "../pages/PageNotFound/PageNotFound";
 
 const router = createBrowserRouter([
   {
     element: <MainLayout />,
     children: [
+      {
+        path: "*",
+        element: <PageNotFound />,
+      },
       {
         path: "/",
         element: <Page />,

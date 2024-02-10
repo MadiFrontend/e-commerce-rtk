@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiFillInstagram } from "react-icons/ai";
 import { BiLogoTelegram, BiLogoFacebook } from "react-icons/bi";
 import logo from "/images/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   fetchProducts,
   updateTotal,
@@ -25,6 +25,7 @@ const SmIcons = [
 ];
 
 export const Header = () => {
+  const location = useLocation();
   const [search, setSearch] = useState(" ");
   const [searchMyData, setSearchMyData] = useState([]);
   const [shown, setShown] = useState(false);
@@ -76,16 +77,21 @@ export const Header = () => {
           </form>
 
           <ul className="flex gap-16">
-            {navigationItems.map((item) => (
-              <Link to={item.href}>
-                <li
-                  className="hover:text-primery cursor-pointer rounded-3xl transition duration-300 flex items-center"
-                  key={`id-${item.href}-${item.title}`}
-                >
-                  {item.title}
-                </li>
-              </Link>
-            ))}
+            {navigationItems.map((item) => {
+              const isActive = location.pathname === item.href;
+              return (
+                <Link to={item.href}>
+                  <li
+                    className={`hover:text-primery cursor-pointer rounded-3xl transition duration-300 flex items-center ${
+                      isActive && "text-primery"
+                    }`}
+                    key={`id-${item.href}-${item.title}`}
+                  >
+                    {item.title}
+                  </li>
+                </Link>
+              );
+            })}
           </ul>
 
           <div className="flex gap-2 ">
@@ -101,7 +107,12 @@ export const Header = () => {
           </div>
         </div>
       </header>
-      <Navbar data={data} cart={cart} updateTotal={updateTotal} amount={amount} />
+      <Navbar
+        data={data}
+        cart={cart}
+        updateTotal={updateTotal}
+        amount={amount}
+      />
       <Filtermodal
         searchMyData={searchMyData}
         shown={shown}

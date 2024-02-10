@@ -48,6 +48,7 @@ function Navbar({ data, cart, updateTotal, amount }) {
             </select>
           </div>
 
+          <span className="border-r-[1px] border-gray-500 w-[1px] h-[50px]"></span>
           {/* middle part */}
           <div className="flex gap-2 items-center">
             {data.slice(0, 1).map((item) => (
@@ -67,6 +68,7 @@ function Navbar({ data, cart, updateTotal, amount }) {
             ))}
           </div>
 
+          <span className="border-r-[1px] border-gray-500 w-[1px] h-[50px]"></span>
           {/* third part */}
           <ul className="flex gap-5">
             {listItems.map((item, index) => (

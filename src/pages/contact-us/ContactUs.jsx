@@ -15,7 +15,7 @@ function ContactUs() {
   };
 
   return (
-    <>
+    <div className="mt-8">
       <h1 className="font-bold text-[2.5rem]">
         Love to hear from you,
         <br />
@@ -74,27 +74,13 @@ function ContactUs() {
           </div>
         </div>
 
-        {/* <input
-          {...register("confirmPassword", {
-            required: "confirmPassword is required",
-            validate: (value) =>
-              value === getValues("password") || "Password must match",
-          })}
-          placeholder="confirm your Password ..."
-          className="border-2 rounded-lg px-2 py-1"
-        />
-       
-        {errors.confirmPassword && (
-          <p className="text-red-400">{errors.confirmPassword.message}</p>
-        )} */}
-
         <input
           type="submit"
           disabled={isSubmitting}
-          className=" w-[60%] py-1 bg-orange-500 text-white disabled:bg-slate-800"
+          className=" w-[60%] py-1 bg-primery text-white disabled:bg-slate-800"
         />
       </form>
-    </>
+    </div>
   );
 }
 

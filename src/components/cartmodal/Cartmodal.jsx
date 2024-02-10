@@ -13,7 +13,7 @@ const Cartmodal = ({ cart, shown, close }) => {
         {" "}
       </div>
       <div
-        className="bg-white w-[22%] h-[450px]  shadow-2xl border rounded-2xl absolute z-10 right-[15px] top-[90px] overflow-y-scroll scrollbar-hide "
+        className="bg-white w-[22%] h-[450px]  shadow-2xl border rounded-2xl absolute z-10 right-[15px] top-[80px] overflow-y-scroll scrollbar-hide "
         onClick={(e) => {
           e.stopPropagation();
         }}

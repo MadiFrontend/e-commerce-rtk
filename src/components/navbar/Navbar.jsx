@@ -32,10 +32,10 @@ function Navbar({ data, cart, updateTotal, amount }) {
   }, [dispatch, cart]);
   return (
     <>
-      <div className="w-full h-20 flex items-center bg-[#262626] text-white sticky top-0 z-50">
+      <div className="w-full h-20  flex items-center bg-[#262626] text-white sticky top-0 z-50">
         <div className="container flex items-center justify-between ">
           {/* first part */}
-          <Category hoverOnCat={hoverOnCat} />
+          <Category />
           <div className="flex gap-5 items-center">
             <select className="text-xs bg-[#262626] duration-300 text-gray-400 border-none outline-none px-1 py-1">
               <option>USD</option>

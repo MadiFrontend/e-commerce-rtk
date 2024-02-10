@@ -26,7 +26,7 @@ const SmIcons = [
 
 export const Header = () => {
   const location = useLocation();
-  const [search, setSearch] = useState(" ");
+  const [search, setSearch] = useState("");
   const [searchMyData, setSearchMyData] = useState([]);
   const [shown, setShown] = useState(false);
 
@@ -46,7 +46,7 @@ export const Header = () => {
     if (inputData) {
       setSearchMyData(showData);
     } else {
-      setSearchMyData([]);
+      setSearchMyData("");
     }
   };
 

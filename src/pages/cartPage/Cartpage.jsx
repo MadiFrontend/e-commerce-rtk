@@ -21,9 +21,9 @@ function Cartpage() {
   }, []);
 
   return (
-    <>
+    <div className="mt-10">
       <Title>Shopping Cart</Title>
-      <div className="flex justify-between">
+      <div className="flex justify-between ">
         <div className="grid w-[100%] grid-cols sm:grid-cols md:grid-cols-1 gap-5 mb-12 ">
           {mainData.length === 0 ? (
             <div className="flex flex-col justify-center items-center text-2xl ">
@@ -106,7 +106,7 @@ function Cartpage() {
           ""
         )}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -11,7 +11,7 @@ function Detailpage() {
   const singlePost = data.find((item) => item.id === parseInt(productId));
   console.log(productId);
   return (
-    <div className="h-full flex justify-center items-center ">
+    <div className="h-full flex justify-center items-center mt-5 ">
       <div className="flex justify-between items-center" key={singlePost.id}>
         <div className="overflow-hidden w-[50%] h-[50%] ">
           <img

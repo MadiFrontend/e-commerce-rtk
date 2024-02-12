@@ -15,7 +15,7 @@ function HeroSection() {
         </div>
         
       </div> */}
-      <img src="/public/images/Top.png" className="bg-cover" />
+      <img src="/public/images/Top.png" className="bg-cover w-full" />
     </section>
   );
 }

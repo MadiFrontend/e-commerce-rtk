@@ -24,7 +24,7 @@ function Card(props) {
           <b>Flash Sales</b>
         </Title>
       </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center gap-5">
         {mainData
           .filter((cat) => cat.category === props.filterName)
           .slice(0, 4)

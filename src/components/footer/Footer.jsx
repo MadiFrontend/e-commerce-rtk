@@ -1,4 +1,5 @@
 import React from "react";
+import MobileNavbar from "../mobileNavbar/MobileNavbar";
 
 export default function Footer() {
   return (
@@ -208,6 +209,7 @@ export default function Footer() {
           Mahdi Hosseini
         </a>
       </div>
+      
     </footer>
   );
 }

@@ -6,7 +6,7 @@ const Filtermodal = ({ searchMyData }) => {
   return (
     <>
       {searchMyData && searchMyData.length > 0 && (
-        <div className="bg-white w-[28%] h-[450px] shadow-2xl border rounded-md fixed z-50 left-[300px] top-[90px]  overflow-y-scroll scrollbar-hide ">
+        <div className="bg-white w-[92%] h-[450px] lg:w-[28%] lg:h-[450px] shadow-2xl border rounded-md lg:fixed absolute z-[99] lg:left-[300px] lg:top-[90px]  overflow-y-scroll scrollbar-hide ">
           {searchMyData.map((search) => {
             return (
               <div className="flex items-center my-10 hover:shadow-sm pb-1 cursor-pointer pr-2">

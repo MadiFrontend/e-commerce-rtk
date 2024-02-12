@@ -1,47 +1,6 @@
 import React from "react";
 import { BiCategory } from "react-icons/bi";
-
-const categoryItemsList = [
-  {
-    title: "SHOE & BAG",
-    list: ["Casual shoes", "boots", "sandals", "slippers"],
-  },
-  {
-    title: "SHOE & BAG",
-    list: ["Casual shoes", "boots", "sandals", "slippers"],
-  },
-  {
-    title: "SHOE & BAG",
-    list: ["Casual shoes", "boots", "sandals", "slippers"],
-  },
-  {
-    title: "SHOE & BAG",
-    list: [
-      "Casual shoes",
-      "boots",
-      "sandals",
-      "slippers",
-      "boots",
-      "sandals",
-      "slippers",
-      "boots",
-      "sandals",
-      
-    ],
-  },
-  {
-    title: "SHOE & BAG",
-    list: ["Casual shoes", "boots", "sandals", "slippers"],
-  },
-  {
-    title: "SHOE & BAG",
-    list: ["Casual shoes", "boots", "sandals", "slippers"],
-  },
-  {
-    title: "SHOE & BAG",
-    list: ["Casual shoes", "boots", "sandals", "slippers"],
-  },
-];
+import { categoryItemsList } from "../../data/categoryItemsList";
 
 function Category() {
   return (

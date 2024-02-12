@@ -2,11 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Cartpage from "../pages/cartPage/Cartpage";
 import Finalpage from "../pages/Finalpage/Finalpage";
-import Detailpage from "../pages/Detailpage/Detailpage";
 import ContactUs from "../pages/contact-us/ContactUs";
 import Page from "../pages/page";
 import Cards from "../components/card/Cards";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
+import Detailpage from "../pages/detailpage/Detailpage";
+import { CategoriesMobile } from "../pages/categories/CategoriesMobile";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "contactus",
         element: <ContactUs />,
+      },
+      {
+        path: "categories",
+        element: <CategoriesMobile />,
       },
       {
         path: "products/:productId",

@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiFillInstagram } from "react-icons/ai";
 import { BiLogoTelegram, BiLogoFacebook } from "react-icons/bi";
 import logo from "/images/logo.png";
-import { Link, useLocation } from "react-router-dom";
-import {
-  fetchProducts,
-  updateTotal,
-} from "../../redux/features/productSlice/productSlice";
-import SearchIco from "../../assets/icons/searchIco";
-import Filtermodal from "../filterModule/Filtermodal";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { updateTotal } from "../../redux/features/productSlice/productSlice";
+
 import Navbar from "../navbar/Navbar";
+import { Hamburger } from "./HamburgerMenu";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
+import Cartmodal from "../cartmodal/Cartmodal";
+import SerachBox from "../search/SerachBox";
+import MobileNavbar from "../mobileNavbar/MobileNavbar";
 
 const navigationItems = [
   { title: "Home", href: "/" },
@@ -26,57 +27,30 @@ const SmIcons = [
 
 export const Header = () => {
   const location = useLocation();
-  const [search, setSearch] = useState("");
-  const [searchMyData, setSearchMyData] = useState([]);
-  const [shown, setShown] = useState(false);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data, cart, amount } = useSelector((state) => state.product);
 
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
-
-  const searchHandler = (e) => {
-    const inputData = e.target.value;
-    setSearch(inputData);
-    const showData = data.filter((items) =>
-      items.title.toLowerCase().includes(search.toLowerCase())
-    );
-    if (inputData) {
-      setSearchMyData(showData);
-    } else {
-      setSearchMyData("");
-    }
-  };
+    dispatch(updateTotal());
+  }, [dispatch, cart]);
 
   return (
     <>
-      <header className="w-full flex justify-center items-center bg-white shadow-md ">
-        <div className="flex justify-between items-center container">
+      <header className="w-full flex justify-center items-center  bg-white shadow-md ">
+        <div className="flex justify-between items-center container ">
+          <div className="lg:hidden">
+            <Hamburger navigationItems={navigationItems} />
+          </div>
           <Link to="/">
             <img src={logo} alt="logo" width={150} />
           </Link>
 
-          <form>
-            <div className="relative">
-              <div className="absolute inset-y-0  flex items-center pr-3 pointer-events-none right-0">
-                <SearchIco width={15} />
-              </div>
-              <input
-                type="text"
-                placeholder="Search..."
-                value={search}
-                onChange={searchHandler}
-                autoComplete="off"
-                id="default-search"
-                className="rounded-md py-[6px] pr-12 pl-2 outline-none text-sm text-gray-900 border"
-                required
-              />
-            </div>
-          </form>
+          <div className="lg:flex hidden">
+            <SerachBox data={data} />
+          </div>
 
-          <ul className="flex gap-16">
+          <ul className=" gap-16 hidden lg:flex">
             {navigationItems.map((item) => {
               const isActive = location.pathname === item.href;
               return (
@@ -94,7 +68,17 @@ export const Header = () => {
             })}
           </ul>
 
-          <div className="flex gap-2 ">
+          <div
+            className="flex md:hidden gap-1 "
+            onClick={() => navigate("/cartpage")}
+          >
+            <HiOutlineShoppingBag size={20} />
+            <span className="px-[5px] py-[1px] text-xs rounded-full bg-[#3dc47e] text-white">
+              {amount}
+            </span>
+          </div>
+
+          <div className=" gap-2 hidden lg:flex ">
             {SmIcons.map((item) => (
               <span
                 className="cursor-pointer"
@@ -107,19 +91,20 @@ export const Header = () => {
           </div>
         </div>
       </header>
-      <Navbar
-        data={data}
-        cart={cart}
-        updateTotal={updateTotal}
-        amount={amount}
-      />
-      <Filtermodal
-        searchMyData={searchMyData}
-        shown={shown}
-        close={() => {
-          setShown(false);
-        }}
-      />
+      <div>
+        <div className="hidden md:flex">
+          <Navbar
+            data={data}
+            cart={cart}
+            updateTotal={updateTotal}
+            amount={amount}
+          />
+        </div>
+        <div className="flex container lg:hidden mt-10">
+          <SerachBox data={data} />
+        </div>
+      </div>
+      <MobileNavbar />
     </>
   );
 };

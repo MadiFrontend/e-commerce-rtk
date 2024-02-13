@@ -32,7 +32,7 @@ function Navbar({ data, cart, updateTotal, amount }) {
   }, [dispatch, cart]);
   return (
     <>
-      <div className="w-full h-20 flex items-center bg-[#262626] text-white sticky top-0 z-50">
+      <div className="w-full h-20 hidden md:flex items-center bg-[#262626] text-white sticky top-0 z-[99]">
         <div className="container flex items-center justify-between ">
           {/* first part */}
           <Category />

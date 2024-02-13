@@ -91,19 +91,18 @@ export const Header = () => {
           </div>
         </div>
       </header>
-      <div>
-        <div className="hidden md:flex">
-          <Navbar
-            data={data}
-            cart={cart}
-            updateTotal={updateTotal}
-            amount={amount}
-          />
-        </div>
-        <div className="flex container lg:hidden mt-10">
-          <SerachBox data={data} />
-        </div>
+
+      <Navbar
+        data={data}
+        cart={cart}
+        updateTotal={updateTotal}
+        amount={amount}
+      />
+
+      <div className="flex container lg:hidden mt-10">
+        <SerachBox data={data} />
       </div>
+
       <MobileNavbar />
     </>
   );

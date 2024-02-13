@@ -6,16 +6,10 @@ import { HiOutlineShoppingBag, HiShoppingBag } from "react-icons/hi2";
 
 const NavigationListItems = [
   {
-    title: "My Acc",
-    href: "/account",
+    title: "Home",
+    href: "/",
     iconOutline: <RiHome2Line size={25} />,
     iconActive: <RiHome2Fill size={25} />,
-  },
-  {
-    title: "Cart",
-    href: "/cartpage",
-    iconOutline: <HiOutlineShoppingBag size={25} />,
-    iconActive: <HiShoppingBag size={25} />,
   },
   {
     title: "Categories",
@@ -23,9 +17,16 @@ const NavigationListItems = [
     iconOutline: <BiCategory size={25} />,
     iconActive: <BiSolidCategory size={25} />,
   },
+
   {
-    title: "Home",
-    href: "/",
+    title: "Cart",
+    href: "/cartpage",
+    iconOutline: <HiOutlineShoppingBag size={25} />,
+    iconActive: <HiShoppingBag size={25} />,
+  },
+  {
+    title: "My Acc",
+    href: "/account",
     iconOutline: <RiHome2Line size={25} />,
     iconActive: <RiHome2Fill size={25} />,
   },

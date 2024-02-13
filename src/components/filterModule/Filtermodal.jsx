@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Filtermodal = ({ searchMyData }) => {
-  console.log(searchMyData);
   return (
     <>
       {searchMyData && searchMyData.length > 0 && (

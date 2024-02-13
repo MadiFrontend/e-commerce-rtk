@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { addToCart } from "../../redux/features/productSlice/productSlice";
 import { MdAddShoppingCart, MdFavoriteBorder } from "react-icons/md";
 
@@ -148,15 +148,17 @@ function Detailpage() {
       <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mt-12 ">
         {relatedCategory.slice(0, 4).map((item) => (
           <div className="grid grid-cols-2 gap-3 ">
-            <div className="overflow-hidden w-full h-[100px] ">
-              <div className="w-full h-full flex justify-center items-center ">
-                <img
-                  src={item.image}
-                  alt="productImage"
-                  className="max-w-[70%] h-full object-contain"
-                />
+            <Link to={`/products/${item.id}`}>
+              <div className="overflow-hidden w-full h-[100px] ">
+                <div className="w-full h-full flex justify-center items-center ">
+                  <img
+                    src={item.image}
+                    alt="productImage"
+                    className="max-w-[70%] h-full object-contain"
+                  />
+                </div>
               </div>
-            </div>
+            </Link>
             <div className="flex flex-col gap-4">
               <p className="text-sm font-semibold" title={item.title}>
                 {item.title.substring(0, 12).toUpperCase()}...

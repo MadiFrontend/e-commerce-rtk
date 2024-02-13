@@ -1,9 +1,11 @@
 import { BiUser, BiHeart } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Cartmodal from "../cartmodal/Cartmodal";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Category from "../category/Category";
+import { Link } from "react-router-dom";
+import { fetchProducts } from "../../redux/features/productSlice/productSlice";
 
 const listItems = [
   {
@@ -20,8 +22,10 @@ const listItems = [
   },
 ];
 
-function Navbar({ data, cart, updateTotal, amount }) {
+function Navbar({ cart, updateTotal, amount }) {
   const [shown, setShown] = useState(false);
+  const [product, setProduct] = useState(null);
+  const data = useSelector((state) => state.product.data);
 
   const handlechange = (index) => {
     index === 2 && setShown(!shown);
@@ -30,6 +34,44 @@ function Navbar({ data, cart, updateTotal, amount }) {
   useEffect(() => {
     dispatch(updateTotal());
   }, [dispatch, cart]);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  useEffect(() => {
+    // Function to select a random product from the array
+    if (data && data.length > 0) {
+      const selectRandomProduct = () => {
+        const index = Math.floor(Math.random() * data.length);
+        return data[index];
+      };
+
+      const storedProductData = localStorage.getItem("selectedProduct");
+      const storedDate = storedProductData
+        ? JSON.parse(storedProductData).date
+        : null;
+      const currentDate = new Date().toISOString().split("T")[0];
+
+      if (!storedDate || storedDate !== currentDate) {
+        // If it's a new day or no product is stored, select a random product
+        const randomProduct = selectRandomProduct();
+        // Store the selected product and the current date
+        localStorage.setItem(
+          "selectedProduct",
+          JSON.stringify({ date: currentDate, product: randomProduct })
+        );
+        setProduct(randomProduct);
+      } else {
+        // If a product is already stored for today, use it
+        const storedProduct = JSON.parse(storedProductData).product;
+        setProduct(storedProduct);
+      }
+    }
+
+    // Set the random product when the component mounts or products update
+  }, [data]);
+
   return (
     <>
       <div className="w-full h-20 hidden md:flex items-center bg-[#262626] text-white sticky top-0 z-[99]">
@@ -50,23 +92,28 @@ function Navbar({ data, cart, updateTotal, amount }) {
 
           <span className="border-r-[1px] border-gray-500 w-[1px] h-[50px]"></span>
           {/* middle part */}
-          <div className="flex gap-2 items-center">
-            {data.slice(0, 1).map((item) => (
-              <>
-                <div className="rounded-2xl w-[50px] h-[50px] overflow-hidden bg-white ">
-                  <img src={item.image} className=" w-[80%] h-[80%] m-auto" />
+          <Suspense fallback={<div className="w-[50%]"></div>}>
+            {product && (
+              <Link to={`/products/${product.id}`}>
+                <div className="flex gap-2 items-center">
+                  <div className="rounded-2xl w-[50px] h-[50px] overflow-hidden bg-white ">
+                    <img
+                      src={product.image}
+                      className=" w-[80%] h-[80%] m-auto pt-2 object-contain"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-sm truncate">
+                      {product.title.substring(0, 20)}...
+                    </p>
+                    <p className="text-xs text-gray-400">
+                      {product.description.substring(0, 30)}...
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm truncate">
-                    {item.title.substring(0, 35)}...
-                  </p>
-                  <p className="text-xs text-gray-400">
-                    {item.description.substring(0, 45)}...
-                  </p>
-                </div>
-              </>
-            ))}
-          </div>
+              </Link>
+            )}
+          </Suspense>
 
           <span className="border-r-[1px] border-gray-500 w-[1px] h-[50px]"></span>
           {/* third part */}

@@ -4,7 +4,10 @@ import { AiFillInstagram } from "react-icons/ai";
 import { BiLogoTelegram, BiLogoFacebook } from "react-icons/bi";
 import logo from "/images/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { updateTotal } from "../../redux/features/productSlice/productSlice";
+import {
+  fetchProducts,
+  updateTotal,
+} from "../../redux/features/productSlice/productSlice";
 
 import Navbar from "../navbar/Navbar";
 import { Hamburger } from "./HamburgerMenu";
@@ -30,6 +33,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data, cart, amount } = useSelector((state) => state.product);
+ 
 
   useEffect(() => {
     dispatch(updateTotal());

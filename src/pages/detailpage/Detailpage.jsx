@@ -104,7 +104,7 @@ function Detailpage() {
           </div>
 
           <div className="flex flex-col gap-3 pl-4 w-full py-3 h-auto rounded-md bg-[#e9e9e9]">
-            <p className="text-lg font-bold">${singlePost.price + 29}.98</p>
+            <p className="text-lg font-bold">${singlePost.price * 2}</p>
             <div className="w-[95%] border border-b-gray-300 mr-auto"></div>
             <p className="text-gray-500">+ Delivery = Total price</p>
           </div>

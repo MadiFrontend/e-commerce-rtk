@@ -35,7 +35,7 @@ const NavigationListItems = [
 function MobileNavbar({ amount }) {
   const location = useLocation();
   return (
-    <div className="w-full md:hidden right-0 fixed bottom-[0] text-gray-500 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] z-[99] h-20 ">
+    <div className="w-full md:hidden right-0 fixed bottom-[0] text-gray-500 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] z-[50] h-20 ">
       <ul className="grid grid-cols-4 pt-4">
         {NavigationListItems.map((item) => {
           const isActive = location.pathname === item.href;

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Cartmodal from "../cartmodal/Cartmodal";
 import { Suspense, useEffect, useState } from "react";
 import Category from "../category/Category";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { fetchProducts } from "../../redux/features/productSlice/productSlice";
 
 const listItems = [
@@ -26,6 +26,12 @@ function Navbar({ cart, updateTotal, amount }) {
   const [shown, setShown] = useState(false);
   const [product, setProduct] = useState(null);
   const data = useSelector((state) => state.product.data);
+  const location = useLocation();
+
+  // This effect runs when the history (route) changes
+  useEffect(() => {
+    setShown(false);
+  }, [location]);
 
   const handlechange = (index) => {
     index === 2 && setShown(!shown);

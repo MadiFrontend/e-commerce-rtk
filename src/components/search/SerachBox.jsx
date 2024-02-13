@@ -3,11 +3,18 @@ import SearchIco from "../../assets/icons/searchIco";
 import Filtermodal from "../filterModule/Filtermodal";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "../../redux/features/productSlice/productSlice";
+// import { useLocation } from "react-router-dom";
 
 function SerachBox({ data }) {
   const [search, setSearch] = useState("");
   const [searchMyData, setSearchMyData] = useState([]);
   const [shown, setShown] = useState(false);
+  // const location = useLocation();
+
+  // // This effect runs when the history (route) changes
+  // useEffect(() => {
+  //   setShown(false);
+  // }, [location]);
 
   const dispatch = useDispatch();
 

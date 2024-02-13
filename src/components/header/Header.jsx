@@ -103,7 +103,7 @@ export const Header = () => {
         <SerachBox data={data} />
       </div>
 
-      <MobileNavbar />
+      <MobileNavbar amount={amount} />
     </>
   );
 };

@@ -32,7 +32,7 @@ const NavigationListItems = [
   },
 ];
 
-function MobileNavbar() {
+function MobileNavbar({ amount }) {
   const location = useLocation();
   return (
     <div className="w-full md:hidden right-0 fixed bottom-[0] text-gray-500 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] z-[99] h-20 ">
@@ -46,11 +46,19 @@ function MobileNavbar() {
                   isActive && "text-primery"
                 } `}
               >
-                {isActive ? (
-                  <span>{item.iconActive}</span>
-                ) : (
-                  <span>{item.iconOutline}</span>
-                )}
+                <div className="flex relative">
+                  {item.title === "Cart" && (
+                    <span className="absolute left-6 px-[5px] py-[1px] text-xs rounded-full bg-[#3dc47e] text-white">
+                      {amount}
+                    </span>
+                  )}
+
+                  {isActive ? (
+                    <span>{item.iconActive}</span>
+                  ) : (
+                    <span>{item.iconOutline}</span>
+                  )}
+                </div>
 
                 <span>{item.title}</span>
               </li>

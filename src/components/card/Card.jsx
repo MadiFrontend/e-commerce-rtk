@@ -96,14 +96,6 @@ function Card(props) {
             );
           })}
       </div>
-
-      {/* {mainData.map(item=>{
-        return(
-          <div key={item.id}>
-            <p>{item.title}</p>
-          </div>
-        )
-      })} */}
     </div>
   );
 }

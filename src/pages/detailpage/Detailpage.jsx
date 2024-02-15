@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { addToCart } from "../../redux/features/productSlice/productSlice";
 import { MdAddShoppingCart, MdFavoriteBorder } from "react-icons/md";
 import Related from "../../components/relatedproducts/Related";
+import AddToCartBtn from "../../components/addToCartBtn/AddToCartBtn";
 
 const sizeListItems = [
   {
@@ -109,23 +110,13 @@ function Detailpage() {
           </div>
 
           <div className="flex justify-between items-center">
-            <button
+            <AddToCartBtn
+              item={singlePost}
               className="hover:text-white rounded-md hover:bg-primery hover:border-primery flex gap-2 items-center  border border-gray-500 px-5 py-3"
-              id="abc"
-              onClick={() =>
-                dispatch(
-                  addToCart({
-                    id: singlePost.id,
-                    title: singlePost.title,
-                    image: singlePost.image,
-                    price: singlePost.price,
-                  })
-                )
-              }
             >
-              <MdAddShoppingCart />
+              {" "}
               Add to cart
-            </button>
+            </AddToCartBtn>
             <button
               className="hover:text-white rounded-full hover:bg-red-500 hover:border-red-500 flex gap-2 items-center border border-gray-500 px-3 py-3"
               title="add to favorite"

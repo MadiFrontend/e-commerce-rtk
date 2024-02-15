@@ -42,7 +42,7 @@ function MobileNavbar({ amount }) {
           return (
             <Link key={`id_${item.title}_${item.href}`} to={item.href}>
               <li
-                className={`flex flex-col items-center text-lg ${
+                className={`flex flex-col items-center text-sm ${
                   isActive && "text-primery"
                 } `}
               >

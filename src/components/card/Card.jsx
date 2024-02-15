@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
-import { FaRegStar, FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Title from "../title/Title";
-import {
-  addToCart,
-  fetchProducts,
-} from "../../redux/features/productSlice/productSlice";
-import { MdAddShoppingCart, MdFavoriteBorder } from "react-icons/md";
+import { fetchProducts } from "../../redux/features/productSlice/productSlice";
+import { MdFavoriteBorder } from "react-icons/md";
+import AddToCartBtn from "../addToCartBtn/AddToCartBtn";
+
 
 function Card(props) {
   const dispatch = useDispatch();
@@ -69,27 +68,17 @@ function Card(props) {
 
                   {/* second section */}
 
-                  <div className="flex flex-col items-center justify-around pr-5">
+                  <div className="flex flex-col items-center h-full mt-3 justify-between pr-5">
                     <MdFavoriteBorder
                       size={21}
-                      className="hover:text-red-500"
+                      className="hover:text-red-500 mb-7"
                     />
-                    <button
-                      className="border bg-white text-black rounded-md p-2  justify-center items-center  hover:bg-primery hover:text-white transition-all ease-linear duration-300  "
-                      id="abc"
-                      onClick={() =>
-                        dispatch(
-                          addToCart({
-                            id: item.id,
-                            title: item.title,
-                            image: item.image,
-                            price: item.price,
-                          })
-                        )
+                    <AddToCartBtn
+                      item={item}
+                      className={
+                        "border bg-white text-black rounded-md p-2  justify-center items-center  hover:bg-primery hover:text-white transition-all ease-linear duration-300"
                       }
-                    >
-                      <MdAddShoppingCart />
-                    </button>
+                    />
                   </div>
                 </div>
               </section>

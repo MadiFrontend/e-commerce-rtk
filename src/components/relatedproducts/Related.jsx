@@ -2,6 +2,7 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/features/productSlice/productSlice";
+import AddToCartBtn from "../addToCartBtn/AddToCartBtn";
 
 function Related({ data, singlePost }) {
   const dispatch = useDispatch();
@@ -31,23 +32,13 @@ function Related({ data, singlePost }) {
                 {item.title.substring(0, 12).toUpperCase()}...
               </p>
               <p className=" font-bold text-[#ff2e00]">${item.price}</p>
-              <button
+
+              <AddToCartBtn
+                item={item}
                 className="hover:text-white justify-center rounded-md hover:bg-primery hover:border-primery flex gap-2 items-center text-sm  border border-gray-500 px-1 py-1"
-                id="abc"
-                onClick={() =>
-                  dispatch(
-                    addToCart({
-                      id: item.id,
-                      title: item.title,
-                      image: item.image,
-                      price: item.price,
-                    })
-                  )
-                }
               >
-                <MdAddShoppingCart />
-                Add to cart
-              </button>
+                Add To Cart
+              </AddToCartBtn>
             </div>
           </div>
         ))}

@@ -2,6 +2,8 @@ import { Outlet } from "react-router-dom";
 import { Header } from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import ScrollToTop from "../hooks/ScrollToTop";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function MainLayout() {
   return (
     <>
@@ -13,6 +15,7 @@ function MainLayout() {
         <Footer />
       </div>
       <ScrollToTop />
+      <ToastContainer />
     </>
   );
 }

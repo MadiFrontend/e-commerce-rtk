@@ -132,7 +132,7 @@ function Navbar({ cart, updateTotal, amount }) {
                 <span className="">{item.icon}</span>
                 {item.title}
                 {index === 2 && (
-                  <span className="px-[5px] py-[1px] text-xs rounded-full bg-[#3dc47e] text-white">
+                  <span className="w-6 h-5 flex justify-center items-center text-xs rounded-full bg-[#3dc47e] text-white">
                     {amount}
                   </span>
                 )}

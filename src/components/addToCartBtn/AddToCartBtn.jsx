@@ -1,25 +1,34 @@
 import React from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { addToCart } from "../../redux/features/productSlice/productSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 function AddToCartBtn({ item, className, children }) {
   const dispatch = useDispatch();
+  const cartData = useSelector((state) => state.product.cart);
 
   const handleClick = () => {
-    dispatch(
-      addToCart({
-        id: item.id,
-        title: item.title,
-        image: item.image,
-        price: item.price,
-      })
-    );
-    toast.success(`🛒 Successfully Added To Cart!`, {
-      className: "bottom-[80px] md:bottom-0 w-full",
-    });
+    const existingItem = cartData.find((i) => i.id === item.id);
+    if (existingItem) {
+      toast.warn(`🛒 It's already added!`, {
+        className: "bottom-[80px] md:bottom-0 w-full",
+        position: "bottom-right",
+      });
+    } else {
+      dispatch(
+        addToCart({
+          id: item.id,
+          title: item.title,
+          image: item.image,
+          price: item.price,
+        })
+      );
+      toast.success(`🛒 Successfully Added To Cart!`, {
+        className: "bottom-[80px] md:bottom-0 w-full",
+        position: "bottom-right",
+      });
+    }
   };
   return (
     <>
@@ -27,18 +36,6 @@ function AddToCartBtn({ item, className, children }) {
         <MdAddShoppingCart />
         {children}
       </button>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss={false}
-        pauseOnHover={false}
-        theme="light"
-        transition:Bounce
-      />
     </>
   );
 }

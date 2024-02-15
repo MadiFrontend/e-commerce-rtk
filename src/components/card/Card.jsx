@@ -7,7 +7,6 @@ import { fetchProducts } from "../../redux/features/productSlice/productSlice";
 import { MdFavoriteBorder } from "react-icons/md";
 import AddToCartBtn from "../addToCartBtn/AddToCartBtn";
 
-
 function Card(props) {
   const dispatch = useDispatch();
   const mainData = useSelector((state) => state.product.data);
@@ -68,10 +67,10 @@ function Card(props) {
 
                   {/* second section */}
 
-                  <div className="flex flex-col items-center h-full mt-3 justify-between pr-5">
+                  <div className="flex flex-col items-center h-full gap-5 justify-around pr-5">
                     <MdFavoriteBorder
                       size={21}
-                      className="hover:text-red-500 mb-7"
+                      className="hover:text-red-500 "
                     />
                     <AddToCartBtn
                       item={item}

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { addToCart } from "../../redux/features/productSlice/productSlice";
 import { MdAddShoppingCart, MdFavoriteBorder } from "react-icons/md";
 import Related from "../../components/relatedproducts/Related";
@@ -47,20 +47,16 @@ const ColorListItems = [
 ];
 
 function Detailpage() {
-  const navigat = useNavigate();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.product.data);
   const { productId } = useParams();
 
   const singlePost = data.find((item) => item.id === parseInt(productId));
-  const relatedCategory = data.filter(
-    (item) => item.category === singlePost.category
-  );
 
   return (
     <section className="max-h-max w-full ">
       <div
-        className="grid grid-cols-1 lg:grid-cols-2 h-screen"
+        className="grid grid-cols-1 lg:grid-cols-2 md:h-screen"
         key={singlePost.id}
       >
         <div className="overflow-hidden w-full h-[350px] md:h-[500px] md:w-[80%] md:mt-14 flex justify-center items-center  ">
@@ -136,9 +132,6 @@ function Detailpage() {
             >
               <MdFavoriteBorder size={21} />
             </button>
-            {/* <button onClick={() => navigat(-1)} className="hover:text-primery">
-              back
-            </button> */}
           </div>
         </div>
       </div>

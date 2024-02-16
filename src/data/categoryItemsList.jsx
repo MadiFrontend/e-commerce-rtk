@@ -4,15 +4,15 @@ export const categoryItemsList = [
     list: ["Casual shoes", "boots", "sandals", "slippers"],
   },
   {
-    title: "SHOE & BAG",
+    title: "Women Clothes",
     list: ["Casual shoes", "boots", "sandals", "slippers"],
   },
   {
-    title: "SHOE & BAG",
+    title: "SHIRTS",
     list: ["Casual shoes", "boots", "sandals", "slippers"],
   },
   {
-    title: "SHOE & BAG",
+    title: "ACCESORRES",
     list: [
       "Casual shoes",
       "boots",
@@ -26,7 +26,7 @@ export const categoryItemsList = [
     ],
   },
   {
-    title: "SHOE & BAG",
+    title: "JEWERLLY",
     list: ["Casual shoes", "boots", "sandals", "slippers"],
   },
   {

@@ -8,6 +8,7 @@ import Cards from "../components/card/Cards";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import Detailpage from "../pages/detailpage/Detailpage";
 import { CategoriesMobile } from "../pages/categories/CategoriesMobile";
+import SignIn from "../pages/signin/Signin";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "categories",
         element: <CategoriesMobile />,
+      },
+      {
+        path: "signin",
+        element: <SignIn />,
       },
       {
         path: "products/:productId",

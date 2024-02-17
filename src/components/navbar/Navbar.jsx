@@ -11,6 +11,7 @@ const listItems = [
   {
     title: "Sign in",
     icon: <BiUser />,
+    href: "/signin",
   },
   {
     title: "Favorite",
@@ -125,18 +126,20 @@ function Navbar({ cart, updateTotal, amount }) {
           {/* third part */}
           <ul className="flex gap-5">
             {listItems.map((item, index) => (
-              <li
-                className="flex gap-1 items-center hover:text-primery cursor-pointer"
-                onClick={() => handlechange(index)}
-              >
-                <span className="">{item.icon}</span>
-                {item.title}
-                {index === 2 && (
-                  <span className="w-6 h-5 flex justify-center items-center text-xs rounded-full bg-[#3dc47e] text-white">
-                    {amount}
-                  </span>
-                )}
-              </li>
+              <Link to={item?.href}>
+                <li
+                  className="flex gap-1 items-center hover:text-primery cursor-pointer"
+                  onClick={() => handlechange(index)}
+                >
+                  <span className="">{item.icon}</span>
+                  {item.title}
+                  {index === 2 && (
+                    <span className="w-6 h-5 flex justify-center items-center text-xs rounded-full bg-[#3dc47e] text-white">
+                      {amount}
+                    </span>
+                  )}
+                </li>
+              </Link>
             ))}
           </ul>
         </div>

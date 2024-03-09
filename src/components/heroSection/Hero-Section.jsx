@@ -2,7 +2,7 @@ import React from "react";
 
 function HeroSection() {
   return (
-    <section className="w-screen h-auto relative left-[50.4%] translate-x-[-51%] bg-[#f2f0ff]">
+    <section className="w-full rounded-2xl overflow-hidden mt-10 h-auto bg-[#f2f0ff]">
       {/* <div className="container grid grid-cols-[1fr_1fr] overflow-x-hidden">
         <div className="flex flex-col justify-center gap-10 ">
           <h1 className="font-bold text-4xl">Collections</h1>
@@ -15,7 +15,7 @@ function HeroSection() {
         </div>
         
       </div> */}
-      <img src="/public/images/Top.png" className="bg-cover w-full" />
+      <img src="/images/slider1.jpg" className="bg-cover w-full" />
     </section>
   );
 }

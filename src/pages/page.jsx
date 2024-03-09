@@ -3,7 +3,7 @@ import HeroSection from "../components/heroSection/Hero-Section";
 function Page() {
   return (
     <>
-      {/* <HeroSection /> */}
+      <HeroSection />
       <div className="mt-16">
         <Cards />
       </div>

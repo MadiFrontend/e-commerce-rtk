@@ -3,11 +3,25 @@ import axios from "axios";
 
 // the real one
 
+// export const fetchProducts = createAsyncThunk(
+//   "productSlice/fetchProducts",
+//   async () => {
+//     const res = await axios.get("https://fakestoreapi.com/products");
+//     return res.data;
+//   }
+// );
 export const fetchProducts = createAsyncThunk(
   "productSlice/fetchProducts",
   async () => {
-    const res = await axios.get("https://fakestoreapi.com/products");
-    return res.data;
+    const data = await axios.get(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/products?populate=*`,
+      {
+        headers: {
+          Authorization: `bearer ${import.meta.env.VITE_REACT_APP_API_TOKEN}`,
+        },
+      }
+    );
+    return data.data.data;
   }
 );
 

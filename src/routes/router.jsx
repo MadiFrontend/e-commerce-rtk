@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Cartpage from "../pages/cartPage/Cartpage";
-import Finalpage from "../pages/Finalpage/Finalpage";
+import Finalpage from "../pages/finalpage/Finalpage";
 import ContactUs from "../pages/contact-us/ContactUs";
 import Page from "../pages/page";
 import Cards from "../components/card/Cards";

@@ -21,7 +21,7 @@ function Card(props) {
     <div className="mb-28 w-[100%] ">
       <div className="">
         <Title>
-          <b>Flash Sales</b>
+          <b>{props.titleName}</b>
         </Title>
       </div>
       {!mainData.length == 0 && (

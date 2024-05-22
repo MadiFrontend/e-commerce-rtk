@@ -19,7 +19,7 @@ function Card(props) {
     <div className="mb-28 w-[100%] ">
       <div className="">
         <Title>
-          <b>Flash Sales</b>
+          <b>{props.titleName}</b>
         </Title>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center gap-5">

@@ -3,12 +3,12 @@ import MainLayout from "../layouts/MainLayout";
 import Cartpage from "../pages/cartPage/Cartpage";
 import Finalpage from "../pages/finalpage/Finalpage";
 import ContactUs from "../pages/contact-us/ContactUs";
-import Page from "../pages/page";
+import Page from "../pages/Page";
 import Cards from "../components/card/Cards";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import Detailpage from "../pages/detailpage/Detailpage";
+import SignIn from "../pages/signin/SignIn";
 import { CategoriesMobile } from "../pages/categories/CategoriesMobile";
-import SignIn from "../pages/signin/Signin";
 
 const router = createBrowserRouter([
   {

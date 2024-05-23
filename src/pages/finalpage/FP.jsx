@@ -2,7 +2,7 @@ import React from "react";
 import { MdOutlineDone } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-function Finalpage() {
+function FP() {
   return (
     <>
       <div className="w-full h-full flex flex-col justify-center items-center gap-5 ">
@@ -20,4 +20,4 @@ function Finalpage() {
   );
 }
 
-export default Finalpage;
+export default FP;

@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Cartpage from "../pages/cartPage/Cartpage";
-import Finalpage from "../pages/finalpage/Finalpage";
+import FP from "../pages/finalpage/FP";
 import ContactUs from "../pages/contact-us/ContactUs";
 import MainPage from "../pages/page";
 import Cards from "../components/card/Cards";
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "finalpage",
-        element: <Finalpage />,
+        element: <FP />,
       },
       {
         path: "contactus",

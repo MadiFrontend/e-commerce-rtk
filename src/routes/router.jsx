@@ -3,7 +3,7 @@ import MainLayout from "../layouts/MainLayout";
 import Cartpage from "../pages/cartPage/Cartpage";
 // import Finalpage from "../pages/finalpage/Finalpage";
 import ContactUs from "../pages/contact-us/ContactUs";
-import Page from "../pages/Page";
+import MainPage from "../pages/page";
 import Cards from "../components/card/Cards";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import Detailpage from "../pages/detailpage/Detailpage";
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/",
-        element: <Page />,
+        element: <MainPage />,
       },
       {
         path: "products",

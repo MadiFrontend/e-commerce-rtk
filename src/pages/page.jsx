@@ -1,6 +1,6 @@
 import Cards from "../components/card/Cards";
 import HeroSection from "../components/heroSection/Hero-Section";
-function Page() {
+function MainPage() {
   return (
     <>
       <HeroSection />
@@ -11,4 +11,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default MainPage;

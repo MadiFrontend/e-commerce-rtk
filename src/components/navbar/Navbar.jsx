@@ -105,16 +105,16 @@ function Navbar({ cart, updateTotal, amount }) {
                 <div className="flex gap-2 items-center">
                   <div className="rounded-2xl w-[50px] h-[50px] overflow-hidden bg-white ">
                     <img
-                      src={product.img}
+                      src={product.image}
                       className=" w-[80%] h-[80%] m-auto pt-2 object-contain"
                     />
                   </div>
                   <div>
                     <p className="text-sm truncate">
-                      {product.title}...
+                      {product.title.substring(0, 20)}...
                     </p>
                     <p className="text-xs text-gray-400">
-                      {product.description}...
+                      {product.description.substring(0, 30)}...
                     </p>
                   </div>
                 </div>

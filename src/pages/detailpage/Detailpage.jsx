@@ -58,15 +58,12 @@ function Detailpage() {
     <section className="max-h-max w-full ">
       <div
         className="grid grid-cols-1 lg:grid-cols-2 md:h-screen"
-        key={singlePost.attributes.id}
+        key={singlePost.id}
       >
         <div className="overflow-hidden w-full h-[350px] md:h-[500px] md:w-[80%] md:mt-14 flex justify-center items-center  ">
           <div className="w-full h-full flex justify-center items-center ">
             <img
-              src={
-                import.meta.env.VITE_REACT_APP_URL +
-                singlePost.attributes.img.data.attributes.url
-              }
+              src={singlePost.image}
               alt="productImage"
               className="max-w-[80%] max-h-[80%] object-contain"
             />
@@ -76,10 +73,10 @@ function Detailpage() {
         <div className="w-full flex justify-center flex-col gap-8 ">
           <div>
             <p className="text-[25px] font-bold" title={singlePost.title}>
-              {singlePost.attributes.title.substring(0, 100)} ...
+              {singlePost.title.substring(0, 100)} ...
             </p>
             <span className="text-xl font-semibold text-gray-500">
-              ${singlePost.attributes.price}
+              ${singlePost.price}
             </span>
           </div>
           {/* sizes */}
@@ -107,9 +104,7 @@ function Detailpage() {
           </div>
 
           <div className="flex flex-col gap-3 pl-4 w-full py-3 h-auto rounded-md bg-[#e9e9e9]">
-            <p className="text-lg font-bold">
-              ${singlePost.attributes.price * 2}
-            </p>
+            <p className="text-lg font-bold">${singlePost.price * 2}</p>
             <div className="w-[95%] border border-b-gray-300 mr-auto"></div>
             <p className="text-gray-500">+ Delivery = Total price</p>
           </div>
@@ -131,7 +126,7 @@ function Detailpage() {
           </div>
         </div>
       </div>
-      {/* <Related data={data} singlePost={singlePost} /> */}
+      <Related data={data} singlePost={singlePost} />
     </section>
   );
 }

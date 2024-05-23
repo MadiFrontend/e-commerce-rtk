@@ -7,7 +7,6 @@ import { fetchProducts } from "../../redux/features/productSlice/productSlice";
 import { MdFavoriteBorder } from "react-icons/md";
 import AddToCartBtn from "../addToCartBtn/AddToCartBtn";
 
-
 function Card(props) {
   const dispatch = useDispatch();
   const mainData = useSelector((state) => state.product.data);
@@ -15,7 +14,7 @@ function Card(props) {
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
-  console.log(mainData);
+
 
   return (
     <div className="mb-28 w-[100%] ">
@@ -34,10 +33,7 @@ function Card(props) {
               >
                 <Link to={`/products/${item.id}`}>
                   <img
-                    src={
-                      import.meta.env.VITE_REACT_APP_URL +
-                      item.attributes.img.data.attributes.url
-                    }
+                    src={item.image}
                     alt="aks"
                     className="w-[200px] h-[170px] overflow-hidden mt-5 transition duration-300 ease-in-out hover:scale-110 m-auto"
                   />
@@ -45,11 +41,8 @@ function Card(props) {
                 {/* first section */}
                 <div className="pl-5 flex justify-between h-[40%]">
                   <div className="flex flex-col justify-around">
-                    <p
-                      className=" text-sm font-semibold"
-                      title={item.attributes.title}
-                    >
-                      {item.attributes.title.substring(0, 30)} ...
+                    <p className=" text-sm font-semibold" title={item.title}>
+                      {item.title.substring(0, 30)} ...
                     </p>
 
                     <div className="flex gap-5 ">
@@ -67,7 +60,7 @@ function Card(props) {
                     </div>
 
                     <p className="text-red-500 text-sm font-bold mb-3 ">
-                      ${item.attributes.price}
+                      ${item.price}
                     </p>
                   </div>
 
@@ -79,7 +72,7 @@ function Card(props) {
                       className="hover:text-red-500 "
                     />
                     <AddToCartBtn
-                      item={item.attributes}
+                      item={item}
                       className={
                         "border bg-white text-black rounded-md p-2  justify-center items-center  hover:bg-primery hover:text-white transition-all ease-linear duration-300"
                       }

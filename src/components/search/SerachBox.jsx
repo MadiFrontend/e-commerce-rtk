@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SearchIco from "../../assets/icons/searchIco";
+import SearchIco from "../../assets/icons/SearchIco";
 import Filtermodal from "../filterModule/Filtermodal";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "../../redux/features/productSlice/productSlice";

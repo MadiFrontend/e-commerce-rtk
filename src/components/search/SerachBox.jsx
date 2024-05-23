@@ -3,18 +3,19 @@ import SearchIco from "../../assets/icons/SearchIco";
 import Filtermodal from "../filterModule/Filtermodal";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "../../redux/features/productSlice/productSlice";
-// import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function SerachBox({ data }) {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(null);
   const [searchMyData, setSearchMyData] = useState([]);
   const [shown, setShown] = useState(false);
-  // const location = useLocation();
+  const location = useLocation();
 
-  // // This effect runs when the history (route) changes
-  // useEffect(() => {
-  //   setShown(false);
-  // }, [location]);
+  // This effect runs when the history (route) changes
+  useEffect(() => {
+    setShown(false);
+    setSearch("");
+  }, [location]);
 
   const dispatch = useDispatch();
 
@@ -30,8 +31,9 @@ function SerachBox({ data }) {
     );
     if (inputData) {
       setSearchMyData(showData);
+      setShown(true);
     } else {
-      setSearchMyData("");
+      setShown(false);
     }
   };
 
@@ -57,6 +59,7 @@ function SerachBox({ data }) {
       </form>
       <Filtermodal
         searchMyData={searchMyData}
+        search={search}
         shown={shown}
         close={() => {
           setShown(false);

@@ -6,8 +6,8 @@ export default {
       center: true,
       padding: {
         DEFAULT: "1rem",
-        lg: "3rem",
-        xl: "4rem",
+        lg: "2rem",
+        xl: "2rem",
       },
     },
     extend: {

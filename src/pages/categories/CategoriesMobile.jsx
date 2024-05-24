@@ -9,7 +9,7 @@ export const CategoriesMobile = ({ navigationItems }) => {
 
   return (
     <>
-      <div className="absolute left-0 top-0 z-20 flex h-full w-[100%] flex-col items-center gap-7 bg-white ">
+      <div className="absolute left-0 top-0 z-20 flex w-[100%] flex-col items-center gap-7 bg-white ">
         <div className="flex w-[75%] items-center justify-between pt-12">
           <div className="flex items-center gap-2">
             <h2>Menu</h2>

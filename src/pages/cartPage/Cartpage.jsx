@@ -21,6 +21,14 @@ function Cartpage() {
     dispatch(fetchProducts());
   }, []);
 
+  const deleteHandler = (item) => {
+    if (
+      confirm("Are you sure you want to remove this product from your cart?")
+    ) {
+      dispatch(removeItem(item.id));
+    }
+  };
+
   return (
     <>
       {!mainData.length ? (
@@ -55,16 +63,16 @@ function Cartpage() {
                     </Link>
                   </div>
 
-                  <div className=" flex w-full flex-col lg:flex-row gap-3 items-center mt-5  ">
+                  <div className=" flex w-full flex-col lg:flex-row gap-3 items-center mt-5 pl-2 ">
                     <div className="mr-auto w-full md:pl-5 ">
                       <p className="">{item.title.substring(0, 20)}...</p>
                     </div>
-                    <div className="flex mr-auto w-full justify-between lg:gap-20 items-center">
+                    <div className="flex mr-auto w-full justify-between gap-4 lg:gap-20 items-center">
                       <p className="font-semibold text-gray-500 ">
                         ${item.price}
                       </p>
 
-                      <div className="flex items-center gap-5 pr-3">
+                      <div className="flex items-center gap-3 pr-3">
                         <button
                           className="border w-[28px] h-[28px] flex items-center justify-center text-xs cursor-pointer"
                           onClick={() => dispatch(incrementQuantity(item.id))}
@@ -83,7 +91,7 @@ function Cartpage() {
                         <FaRegTrashCan
                           size={16}
                           className="cursor-pointer text-gray-400"
-                          onClick={() => dispatch(removeItem(item.id))}
+                          onClick={() => deleteHandler(item)}
                         />
                       </div>
                     </div>

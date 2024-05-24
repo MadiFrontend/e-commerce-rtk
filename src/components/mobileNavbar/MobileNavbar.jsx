@@ -48,7 +48,7 @@ function MobileNavbar({ amount }) {
               >
                 <div className="flex relative">
                   {item.title === "Cart" && (
-                    <span className="absolute left-6 px-[5px] py-[1px] text-xs rounded-full bg-[#3dc47e] text-white">
+                    <span className="absolute left-6 w-[22px] h-[22px] flex justify-center items-center text-[11px] rounded-full bg-[#3dc47e] text-white">
                       {amount}
                     </span>
                   )}

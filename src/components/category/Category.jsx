@@ -1,6 +1,7 @@
 import React from "react";
 import { BiCategory } from "react-icons/bi";
 import { categoryItemsList } from "../../data/categoryItemsList";
+import categoryImage from "/images/lady-menu.png";
 
 function Category() {
   return (
@@ -26,11 +27,7 @@ function Category() {
           ))}
         </div>
 
-        <img
-          src="/public/images/lady-menu.png"
-          alt="lady"
-          className="ml-auto w-[200px]"
-        />
+        <img src={categoryImage} alt="lady" className="ml-auto w-[200px]" />
       </div>
     </div>
   );

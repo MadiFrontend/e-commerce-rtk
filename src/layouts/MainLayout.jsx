@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 function MainLayout() {
   return (
     <>
-      <div className="min-h-screen grid grid-rows-[90px_1fr_auto] text-[#222] text-myFont ">
+      <div className="min-h-screen grid grid-rows-[90px_1fr_auto] text-[#222] font-myFont ">
         <Header />
         <main className="container min-h-[70vh]">
           <Outlet />

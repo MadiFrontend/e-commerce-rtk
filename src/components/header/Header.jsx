@@ -5,7 +5,6 @@ import { BiLogoTelegram, BiLogoFacebook } from "react-icons/bi";
 import logo from "/images/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { updateTotal } from "../../redux/features/productSlice/productSlice";
-
 import Navbar from "../navbar/Navbar";
 import { Hamburger } from "./HamburgerMenu";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
@@ -72,7 +71,7 @@ export const Header = () => {
             onClick={() => navigate("/cartpage")}
           >
             <HiOutlineShoppingBag size={20} />
-            <span className="px-[5px] py-[1px] text-xs rounded-full bg-[#3dc47e] text-white">
+            <span className="w-[22px] h-[22px] flex justify-center items-center text-[11px] rounded-full bg-[#3dc47e] text-white">
               {amount}
             </span>
           </div>

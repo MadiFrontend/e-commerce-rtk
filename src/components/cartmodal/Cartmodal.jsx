@@ -6,6 +6,13 @@ import { removeItem } from "../../redux/features/productSlice/productSlice";
 
 const Cartmodal = ({ cart, shown, close }) => {
   const dispatch = useDispatch();
+  const deleteHandler = (search) => {
+    if (
+      confirm("Are you sure you want to remove this product from your cart?")
+    ) {
+      dispatch(removeItem(search.id));
+    }
+  };
 
   return shown ? (
     <>
@@ -50,7 +57,7 @@ const Cartmodal = ({ cart, shown, close }) => {
                       color="red"
                       size={18}
                       className="cursor-pointer "
-                      onClick={() => dispatch(removeItem(search.id))}
+                      onClick={() => deleteHandler(search)}
                     />
                   </div>
                 </div>

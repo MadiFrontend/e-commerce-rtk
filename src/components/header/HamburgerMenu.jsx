@@ -2,7 +2,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { Link } from "react-router-dom";
-import logo from "../../../public/images/logo.png";
+import logo from "/public/images/logo.png";
 export const Hamburger = ({ navigationItems }) => {
   const [isOpen, setIsOpen] = useState(false);
 

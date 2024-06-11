@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { FaStar } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Title from "../title/Title";
 import { fetchProducts } from "../../redux/features/productSlice/productSlice";
 import { MdFavoriteBorder } from "react-icons/md";
 import AddToCartBtn from "../addToCartBtn/AddToCartBtn";
+import Rating from "../rating/Rating";
 
 function Card(props) {
   const dispatch = useDispatch();
@@ -13,11 +13,22 @@ function Card(props) {
 
   useEffect(() => {
     dispatch(fetchProducts());
+    console.log(mainData);
   }, []);
+
+  function round(num) {
+    return Math.round((num + Number.EPSILON) * 100) / 100;
+  }
+
+  function calculateDiscountPercentage(originalPrice, discountedPrice) {
+    const discountRate =
+      ((originalPrice - discountedPrice) / originalPrice) * 100;
+    return discountRate.toFixed();
+  }
 
   return (
     <div className="mb-28 w-[100%] ">
-      <div className="">
+      <div>
         <Title>
           <b>{props.titleName}</b>
         </Title>
@@ -30,49 +41,80 @@ function Card(props) {
             .map((item) => {
               return (
                 <section
-                  className=" flex flex-col justify-around w-[280px] h-[370px] bg-white rounded-md shadow-md overflow-hidden hover:shadow-lg cursor-pointer  transition duration-500 "
+                  className=" flex flex-col justify-around w-[280px] h-[370px] bg-white  border overflow-hidden hover:shadow-lg cursor-pointer  transition duration-500 "
                   key={item.id}
                 >
-                  <Link to={`/products/${item.id}`}>
-                    <img
-                      src={item.image}
-                      alt="aks"
-                      className="w-[200px] h-[170px] overflow-hidden mt-5 transition duration-300 ease-in-out hover:scale-110 m-auto"
-                    />
-                  </Link>
+                  <div className="relative">
+                    <Link to={`/products/${item.id}`}>
+                      <img
+                        src={item.image}
+                        alt="aks"
+                        className="w-[200px] h-[170px] object-contain overflow-hidden mt-10 transition duration-300 ease-in-out hover:scale-110 m-auto "
+                      />
+                    </Link>
+                    <span className="hover:bg-red-500 bg-gray-300 w-8 h-8 rounded-full absolute top-2 right-2 flex justify-center items-center">
+                      <MdFavoriteBorder size={19} className=" text-white" />
+                    </span>
+                    {item.category === "jewelery" ? (
+                      ""
+                    ) : (
+                      <span className="bg-red-500 w-14 h-6 rounded-md absolute top-2 left-2 flex justify-center items-center text-white text-xs ">
+                        %
+                        {calculateDiscountPercentage(
+                          item.price,
+                          round(
+                            item.price > 9 && item.price < 55
+                              ? item.price - 5
+                              : item.price - 50
+                          )
+                        )}
+                      </span>
+                    )}
+                  </div>
                   {/* first section */}
-                  <div className="pl-5 flex justify-between h-[40%]">
-                    <div className="flex flex-col justify-around">
-                      <p className=" text-sm font-semibold" title={item.title}>
-                        {item.title.substring(0, 30)} ...
+                  <div className="pl-5 flex justify-between  mt-5">
+                    <div className="flex flex-col justify-around gap-6">
+                      <p className=" text-sm " title={item.title}>
+                        {item.title.substring(0, 25)}...
                       </p>
 
-                      <div className="flex gap-5 ">
-                        <span className="flex">
-                          <FaStar size={18} color="gold" />
-                          <FaStar size={18} color="gold" />
-                          <FaStar size={18} color="gold" />
-                          <FaStar size={18} color="gold" />
-                          <FaStar size={18} color="gold" />
-                          {/* <FaRegStar size={18} color="gold" /> */}
-                        </span>
-                        <span className="text-sm text-gray-500">
-                          {/* ({item.rating.count}) */}
-                        </span>
+                      <div className="flex">
+                        <p className="text-red-500 text-sm font-bold  ">
+                          {item.category === "jewelery"
+                            ? ""
+                            : `$ ${round(
+                                item.price > 9 && item.price < 55
+                                  ? item.price - 5
+                                  : item.price - 50
+                              )}`}
+                        </p>
+                        <p
+                          className={` text-gray-500 text-sm font-bold line-through ml-5  ${
+                            item.category === "jewelery" &&
+                            " text-red-500 no-underline ml-0"
+                          }`}
+                        >
+                          ${item.price}
+                        </p>
                       </div>
 
-                      <p className="text-red-500 text-sm font-bold mb-3 ">
-                        ${item.price}
-                      </p>
+                      <div className="flex gap-5 mb-3">
+                        <Rating rating={item.rating} />
+                        <p className="font-semibold text-sm text-gray-400">
+                          (
+                          {round(
+                            item.rating.rate > 4
+                              ? Math.floor(item.rating.rate)
+                              : item.rating.rate
+                          )}
+                          )
+                        </p>
+                      </div>
                     </div>
 
                     {/* second section */}
 
-                    <div className="flex flex-col items-center h-full gap-5 justify-around pr-5">
-                      <MdFavoriteBorder
-                        size={21}
-                        className="hover:text-red-500 "
-                      />
+                    <div className="flex flex-col items-center h-full  justify-around pr-5">
                       <AddToCartBtn
                         item={item}
                         className={

@@ -3,7 +3,7 @@ import MobileNavbar from "../mobileNavbar/MobileNavbar";
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-100 mt-20 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
+    <footer className="bg-neutral-900 mt-20 text-center text-neutral-600 lg:text-left">
       <div className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
         <div className="mr-12 hidden lg:block">
           <span>Get connected with us on social networks:</span>
@@ -200,16 +200,15 @@ export default function Footer() {
       </div>
 
       {/* <!--Copyright section--> */}
-      <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
+      <div className="bg-neutral-800 p-6 text-center text-neutral-400 ">
         <span>©2024 Made by </span>
         <a
-          className="font-semibold text-neutral-600 dark:text-neutral-400"
+          className="font-semibold text-neutral-100 "
           href="https://github.com/MadiFrontend"
         >
           Mahdi Hosseini
         </a>
       </div>
-      
     </footer>
   );
 }

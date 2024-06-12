@@ -3,13 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Title from "../title/Title";
 import { fetchProducts } from "../../redux/features/productSlice/productSlice";
-import { MdFavoriteBorder } from "react-icons/md";
 import AddToCartBtn from "../addToCartBtn/AddToCartBtn";
 import Rating from "../rating/Rating";
+import AddToFavoriteBtn from "../addtofavorite/AddToFavorite";
 
-function Card(props) {
+function Card({ titleName, filterName, mainData }) {
   const dispatch = useDispatch();
-  const mainData = useSelector((state) => state.product.data);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -30,13 +29,13 @@ function Card(props) {
     <div className="mb-28 w-[100%] ">
       <div>
         <Title>
-          <b>{props.titleName}</b>
+          <b>{titleName}</b>
         </Title>
       </div>
       {!mainData.length == 0 && (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center gap-5">
           {mainData
-            .filter((items) => items.category === props.filterName)
+            .filter((items) => items.category === filterName)
             .slice(0, 4)
             .map((item) => {
               return (
@@ -53,7 +52,7 @@ function Card(props) {
                       />
                     </Link>
                     <span className="hover:bg-red-500 bg-gray-300 w-8 h-8 rounded-full absolute top-2 right-2 flex justify-center items-center">
-                      <MdFavoriteBorder size={19} className=" text-white" />
+                      <AddToFavoriteBtn item={item} />
                     </span>
                     {item.category === "jewelery" ? (
                       ""
@@ -91,7 +90,7 @@ function Card(props) {
                         <p
                           className={` text-gray-500 text-sm font-bold line-through ml-5  ${
                             item.category === "jewelery" &&
-                            " text-red-500 no-underline ml-0"
+                            " text-red-500 no-underline !ml-0"
                           }`}
                         >
                           ${item.price}

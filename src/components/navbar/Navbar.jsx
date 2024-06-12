@@ -16,9 +16,10 @@ const listItems = [
   {
     title: "Favorite",
     icon: <BiHeart />,
+    href: "/favorite",
   },
   {
-    title: "Card",
+    title: "Cart",
     icon: <HiOutlineShoppingBag />,
   },
 ];
@@ -27,6 +28,7 @@ function Navbar({ cart, updateTotal, amount }) {
   const [shown, setShown] = useState(false);
   const [product, setProduct] = useState(null);
   const data = useSelector((state) => state.product.data);
+  const favoriteData = useSelector((state) => state.product.favorite);
   const location = useLocation();
 
   // This effect runs when the history (route) changes
@@ -128,15 +130,32 @@ function Navbar({ cart, updateTotal, amount }) {
             {listItems.map((item, index) => (
               <li
                 key={item.title}
-                className="flex gap-1 items-center text-sm hover:text-primery cursor-pointer"
+                className={`flex gap-1 items-center text-sm hover:text-primary cursor-pointer ${
+                  index === 2 ? "special-item" : ""
+                } ${index === 0 && "pr-7"}`}
                 onClick={() => handlechange(index)}
               >
                 <span className="">{item.icon}</span>
-                {item.title}
-                {index === 2 && (
-                  <span className="w-6 h-5 flex justify-center items-center text-xs rounded-full bg-[#3dc47e] text-white">
-                    {amount}
-                  </span>
+                {index === 1 ? (
+                  <Link to="/favorite" className="flex gap-1">
+                    {item.title}
+                    <span
+                      className={`${
+                        favoriteData.length === 0 ? "invisible" : "visible"
+                      } w-6 h-5 flex justify-center items-center text-xs rounded-full bg-red-500 text-white`}
+                    >
+                      {favoriteData.length}
+                    </span>
+                  </Link>
+                ) : (
+                  <>
+                    {item.title}
+                    {index === 2 && (
+                      <span className="w-6 h-5 flex justify-center items-center text-xs rounded-full bg-[#3dc47e] text-white">
+                        {amount}
+                      </span>
+                    )}
+                  </>
                 )}
               </li>
             ))}

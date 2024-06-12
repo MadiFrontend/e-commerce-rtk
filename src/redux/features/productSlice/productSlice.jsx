@@ -15,6 +15,7 @@ const initialState = {
   loading: false,
   data: [],
   cart: [],
+  favorite: [],
   error: null,
   amount: 0,
   total: 0,
@@ -35,6 +36,19 @@ const productSlice = createSlice({
         state.cart.push({ ...action.payload, quantity: 1 });
       }
     },
+
+    addToFavorite: (state, action) => {
+      const addToFavoriteData = state.favorite.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (addToFavoriteData) {
+        addToFavoriteData.quantity++;
+      } else {
+        state.favorite.push({ ...action.payload, quantity: 1 });
+      }
+    },
+
     incrementQuantity: (state, action) => {
       const item = state.cart.find((item) => item.id === action.payload);
       item.quantity++;
@@ -87,5 +101,6 @@ export const {
   removeItem,
   updateTotal,
   removeCartItems,
+  addToFavorite,
 } = productSlice.actions;
 export default productSlice.reducer;

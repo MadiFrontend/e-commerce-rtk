@@ -9,6 +9,7 @@ import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import Detailpage from "../pages/detailpage/Detailpage";
 import SignIn from "../pages/signin/SignIn";
 import { CategoriesMobile } from "../pages/categories/CategoriesMobile";
+import FavoritePage from "../pages/favoritePage/FavoritePage";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "products/:productId",
         element: <Detailpage />,
+      },
+      {
+        path: "favorite",
+        element: <FavoritePage />,
       },
     ],
   },

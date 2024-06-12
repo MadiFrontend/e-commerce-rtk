@@ -1,10 +1,6 @@
-import { useEffect } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 
 function Rating({ rating }) {
-  useEffect(() => {
-    console.log(star);
-  }, []);
   const star = rating.rate > 5 ? rating.rate - 1 : Math.floor(rating.rate);
   return (
     <div>

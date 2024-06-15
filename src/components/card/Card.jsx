@@ -12,7 +12,6 @@ function Card({ titleName, filterName, mainData }) {
 
   useEffect(() => {
     dispatch(fetchProducts());
-    console.log(mainData);
   }, []);
 
   function round(num) {

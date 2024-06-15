@@ -9,10 +9,12 @@ function MainLayout() {
     <>
       <div className="min-h-screen grid grid-rows-[90px_1fr_auto] text-[#222] font-myFont ">
         <Header />
-        <main className="container min-h-[70vh]">
+        <main className="container min-h-full">
           <Outlet />
         </main>
-        <Footer />
+        <div className="mt-52">
+          <Footer />
+        </div>
       </div>
       <ScrollToTop />
       <ToastContainer />

@@ -4,6 +4,7 @@ import { addToCart } from "../../redux/features/productSlice/productSlice";
 import { MdAddShoppingCart, MdFavoriteBorder } from "react-icons/md";
 import Related from "../../components/relatedproducts/Related";
 import AddToCartBtn from "../../components/addToCartBtn/AddToCartBtn";
+import AddToFavoriteBtn from "../../components/addtofavorite/AddToFavorite";
 
 const sizeListItems = [
   {
@@ -161,10 +162,10 @@ function Detailpage() {
               Add to cart
             </AddToCartBtn>
             <button
-              className="hover:text-white rounded-full hover:bg-red-500 hover:border-red-500 flex gap-2 items-center border border-gray-500 px-3 py-3"
+              className="rounded-full bg-gray-300 hover:bg-red-500  flex gap-2 items-center px-3 py-3"
               title="add to favorite"
             >
-              <MdFavoriteBorder size={21} />
+              <AddToFavoriteBtn item={singlePost} />
             </button>
           </div>
         </div>

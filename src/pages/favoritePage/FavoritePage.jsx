@@ -26,7 +26,7 @@ function FavoritePage() {
           <h2 className="text-center font-bold text-3xl mb-10">
             Your Favorite Products❤️
           </h2>
-          <div className="w-full items-center flex flex-col md:flex-row gap-10 flex-wrap justify-between ">
+          <div className="w-full grid grid-cols-1 md:grid-cols-4 justify-items-center gap-10">
             {mainData.map((item) => {
               return (
                 <div

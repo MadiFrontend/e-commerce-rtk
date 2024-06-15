@@ -54,6 +54,16 @@ function Detailpage() {
 
   const singlePost = data.find((item) => item.id === parseInt(productId));
 
+  function calculateDiscountPercentage(originalPrice, discountedPrice) {
+    const discountRate =
+      ((originalPrice - discountedPrice) / originalPrice) * 100;
+    return discountRate.toFixed();
+  }
+
+  function round(num) {
+    return Math.round((num + Number.EPSILON) * 100) / 100;
+  }
+
   return (
     <section className="max-h-max w-full ">
       <div
@@ -75,9 +85,9 @@ function Detailpage() {
             <p className="text-[25px] font-bold" title={singlePost.title}>
               {singlePost.title.substring(0, 100)} ...
             </p>
-            <span className="text-xl font-semibold text-gray-500">
+            {/* <span className="text-xl font-semibold text-gray-500">
               ${singlePost.price}
-            </span>
+            </span> */}
           </div>
           {/* sizes */}
           <ul className="flex gap-5">
@@ -104,9 +114,42 @@ function Detailpage() {
           </div>
 
           <div className="flex flex-col gap-3 pl-4 w-full py-3 h-auto rounded-md bg-[#e9e9e9]">
-            <p className="text-lg font-bold">${singlePost.price * 2}</p>
-            <div className="w-[95%] border border-b-gray-300 mr-auto"></div>
-            <p className="text-gray-500">+ Delivery = Total price</p>
+            <div className="flex gap-5 text-lg font-bold text-gray-500 ">
+              {singlePost.category === "jewelery" ? (
+                ""
+              ) : (
+                <span className="bg-red-500 w-16 h-6 rounded-md flex justify-center items-center singlePosts-center text-white text-xs ">
+                  %
+                  {calculateDiscountPercentage(
+                    singlePost.price,
+                    round(
+                      singlePost.price > 9 && singlePost.price < 55
+                        ? singlePost.price - 5
+                        : singlePost.price - 50
+                    )
+                  )}
+                  <p className="font-normal pl-1">OFF</p>
+                </span>
+              )}
+              <p className="text-red-500 ">
+                {singlePost.category === "jewelery"
+                  ? ""
+                  : `$ ${round(
+                      singlePost.price > 9 && singlePost.price < 55
+                        ? singlePost.price - 5
+                        : singlePost.price - 50
+                    )}`}
+              </p>
+              <p
+                className={` text-gray-500 line-through ml-5  ${
+                  singlePost.category === "jewelery" &&
+                  " text-red-500 no-underline !ml-0"
+                }`}
+              >
+                ${singlePost.price}
+              </p>
+              |<p className="font-normal"> + Delivery </p>
+            </div>
           </div>
 
           <div className="flex justify-between items-center">

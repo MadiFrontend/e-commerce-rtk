@@ -25,7 +25,7 @@ function Card({ titleName, filterName, mainData }) {
   }
 
   return (
-    <div className="mb-28 w-[100%] ">
+    <div className="mt-28 w-[100%] ">
       <div>
         <Title>
           <b>{titleName}</b>

@@ -1,9 +1,8 @@
 import React from "react";
-import MobileNavbar from "../mobileNavbar/MobileNavbar";
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-900 mt-20 text-center text-neutral-600 lg:text-left">
+    <footer className="bg-neutral-900  text-center text-neutral-600 lg:text-left">
       <div className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
         <div className="mr-12 hidden lg:block">
           <span>Get connected with us on social networks:</span>

@@ -1,9 +1,7 @@
 import { useSelector } from "react-redux";
-import Cards from "../components/card/Cards";
 import HeroSection from "../components/heroSection/Hero-Section";
 import NewArrival from "../components/newArrivals/NewArrival";
 import Card from "../components/card/Card";
-import Timer from "../components/timer/Timer";
 
 function MainPage() {
   const mainData = useSelector((state) => state.product.data);

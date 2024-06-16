@@ -4,7 +4,6 @@ import Cartpage from "../pages/cartPage/Cartpage";
 import FP from "../pages/finalpage/FP";
 import ContactUs from "../pages/contact-us/ContactUs";
 import MainPage from "../pages/page";
-import Cards from "../components/card/Cards";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import Detailpage from "../pages/detailpage/Detailpage";
 import SignIn from "../pages/signin/SignIn";
@@ -23,10 +22,10 @@ const router = createBrowserRouter([
         path: "/",
         element: <MainPage />,
       },
-      {
-        path: "products",
-        element: <Cards />,
-      },
+      // {
+      //   path: "products",
+      //   element: <Cards />,
+      // },
       {
         path: "cartpage",
         element: <Cartpage />,

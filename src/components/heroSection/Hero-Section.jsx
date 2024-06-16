@@ -19,7 +19,7 @@ const HeroSection = () => {
           delay: 3500,
           disableOnInteraction: false,
         }}
-        className="w-[88vw] flex md:h-[400px] items-center justify-center mt-5 h-auto  md:w-full "
+        className="w-[86vw] flex md:h-[400px] items-center justify-center mt-5 h-auto  md:w-full "
       >
         <SwiperSlide>
           <img src="/images/slider1.jpg" className="bg-contain " />

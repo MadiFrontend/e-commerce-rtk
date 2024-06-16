@@ -10,7 +10,7 @@ export default {
     },
     extend: {
       colors: {
-        primery: "#4E66EC",
+        primery: "#FF8F9C",
       },
       fontFamily: {
         myFont: "Roboto, sans-serif",

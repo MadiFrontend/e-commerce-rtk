@@ -57,7 +57,7 @@ function Card({ titleName, filterName, mainData }) {
                     {item.category === "jewelery" ? (
                       ""
                     ) : (
-                      <span className="bg-red-500 md:w-14 md:h-6 w-10 h-4 rounded-md absolute md:top-2 top-0 left-2 flex justify-center items-center text-white text-xs ">
+                      <span className="bg-[#FF8F9C] md:w-14 md:h-6 w-10 h-4 rounded-md absolute md:top-2 top-0 left-2 flex justify-center items-center text-white text-xs ">
                         %
                         {calculateDiscountPercentage(
                           item.price,
@@ -84,7 +84,7 @@ function Card({ titleName, filterName, mainData }) {
                       </p>
 
                       <div className="flex">
-                        <p className="text-red-500 text-sm font-bold  ">
+                        <p className="text-[#FF8F9C] text-sm font-bold  ">
                           {item.category === "jewelery"
                             ? ""
                             : `$ ${round(
@@ -96,7 +96,7 @@ function Card({ titleName, filterName, mainData }) {
                         <p
                           className={` text-gray-500 text-sm md:font-bold line-through md:ml-5 ml-1  ${
                             item.category === "jewelery" &&
-                            " text-red-500 no-underline !ml-0"
+                            " text-[#FF8F9C] no-underline !ml-0"
                           }`}
                         >
                           ${item.price}
@@ -123,7 +123,7 @@ function Card({ titleName, filterName, mainData }) {
                       <AddToCartBtn
                         item={item}
                         className={
-                          "border bg-white text-black rounded-md p-2  justify-center items-center  hover:bg-primery hover:text-white transition-all ease-linear duration-300"
+                          "border rounded-md p-2  justify-center items-center  hover:bg-[#FF8F9C] hover:text-white transition-all ease-linear duration-300"
                         }
                       />
                     </div>

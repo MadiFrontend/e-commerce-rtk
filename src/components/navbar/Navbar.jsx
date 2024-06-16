@@ -83,16 +83,16 @@ function Navbar({ cart, updateTotal, amount }) {
 
   return (
     <>
-      <div className="w-full h-20 hidden md:flex items-center bg-[#262626] text-white sticky top-0 z-[99]">
+      <div className="w-full h-20 hidden md:flex items-center bg-white border-y text-gray-800 sticky top-0 z-[99]">
         <div className="container flex items-center justify-between ">
           {/* first part */}
           <Category />
           <div className="flex gap-5 items-center">
-            <select className="text-xs bg-[#262626] duration-300 text-gray-400 border-none outline-none px-1 py-1">
+            <select className="text-xs bg-white duration-300 text-gray-400 border-none outline-none px-1 py-1">
               <option>USD</option>
               <option>EUR</option>
             </select>
-            <select className="text-xs bg-[#262626] duration-300 text-gray-400 border-none outline-none px-1 py-1">
+            <select className="text-xs bg-white duration-300 text-gray-400 border-none outline-none px-1 py-1">
               <option>English</option>
               <option>Persian</option>
               <option>Arabic</option>
@@ -105,7 +105,7 @@ function Navbar({ cart, updateTotal, amount }) {
             {product && (
               <Link to={`/products/${product.id}`}>
                 <div className="flex gap-2 items-center">
-                  <div className="rounded-2xl w-[50px] h-[50px] overflow-hidden bg-white ">
+                  <div className="rounded-2xl w-[50px] h-[50px] overflow-hidden border">
                     <img
                       src={product.image}
                       className=" w-[80%] h-[80%] m-auto pt-2 object-contain"
@@ -151,7 +151,7 @@ function Navbar({ cart, updateTotal, amount }) {
                   <>
                     {item.title}
                     {index === 2 && (
-                      <span className="w-6 h-5 flex justify-center items-center text-xs rounded-full bg-[#3dc47e] text-white">
+                      <span className="w-6 h-5 flex justify-center items-center text-xs rounded-full bg-[#FF8F9C] text-white">
                         {amount}
                       </span>
                     )}

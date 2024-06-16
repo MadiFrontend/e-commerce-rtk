@@ -54,8 +54,8 @@ export const Header = () => {
               return (
                 <Link to={item.href}>
                   <li
-                    className={`hover:text-primery cursor-pointer rounded-3xl transition duration-300 flex items-center ${
-                      isActive && "text-primery"
+                    className={`hover:text-[#FF8F9C] cursor-pointer rounded-3xl transition duration-300 flex items-center ${
+                      isActive && "text-[#FF8F9C]"
                     }`}
                     key={`id-${item.href}-${item.title}`}
                   >
@@ -80,7 +80,7 @@ export const Header = () => {
             {SmIcons.map((item) => (
               <span
                 className="cursor-pointer"
-                onMouseOver={({ target }) => (target.style.color = "#4E66EC")}
+                onMouseOver={({ target }) => (target.style.color = "#FF8F9C")}
                 onMouseOut={({ target }) => (target.style.color = "gray")}
               >
                 {item.comp}

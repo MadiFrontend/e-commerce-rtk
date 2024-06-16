@@ -5,7 +5,7 @@ import categoryImage from "/images/lady-menu.png";
 
 function Category() {
   return (
-    <div className="group py-7 hover:text-primery">
+    <div className="group py-7 hover:text-[#FF8F9C]">
       <button className="flex items-center gap-1">
         <BiCategory />
         <p className="font-semibold text-lg  ">Categories</p>
@@ -18,7 +18,7 @@ function Category() {
               <p className=" text-black font-semibold ">{item.title}</p>
               {item.list.map((i) => {
                 return (
-                  <li className="text-gray-500 text-sm hover:text-primery cursor-pointer">
+                  <li className="text-gray-500 text-sm hover:text-[#FF8F9C] cursor-pointer">
                     {i}
                   </li>
                 );

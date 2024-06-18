@@ -119,7 +119,7 @@ function Detailpage() {
               {singlePost.category === "jewelery" ? (
                 ""
               ) : (
-                <span className="bg-red-500 w-16 h-6 rounded-md flex justify-center items-center singlePosts-center text-white text-xs ">
+                <span className="bg-primery w-16 h-6 rounded-md flex justify-center items-center singlePosts-center text-white text-xs ">
                   %
                   {calculateDiscountPercentage(
                     singlePost.price,
@@ -132,7 +132,7 @@ function Detailpage() {
                   <p className="font-normal pl-1">OFF</p>
                 </span>
               )}
-              <p className="text-red-500 ">
+              <p className="text-[##FF8F9C] ">
                 {singlePost.category === "jewelery"
                   ? ""
                   : `$ ${round(
@@ -144,7 +144,7 @@ function Detailpage() {
               <p
                 className={` text-gray-500 line-through ml-5  ${
                   singlePost.category === "jewelery" &&
-                  " text-red-500 no-underline !ml-0"
+                  " text-[#FF8F9C] no-underline !ml-0"
                 }`}
               >
                 ${singlePost.price}
